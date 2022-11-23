@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-class Address(db.model):
+class Address(db.Model):
     __tablename__ = 'address'
 
     if environment == 'production':

@@ -2,21 +2,22 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 
-class Pie(db.model):
+class Pie(db.Model):
     __tablename__ = 'pies'
 
     if environment == 'production':
         __table__args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=False)
-    # easy_order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('easyorders.id')), nullable=False)
+    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=True)
+    # easy_order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('easyorders.id')), nullable=True)
     menu_item = db.Column(db.Boolean, default=False)
-    name = db.Column(db.String(100))
-    price = db.Column(db.float, nullable=False)
-    bake = db.Column(db.Integer)
-    cut = db.Column(db.Integer)
-    size = db.Column(db.Integer)
+    name = db.Column(db.String(20))
+    price = db.Column(db.Float, nullable=False)
+    bake = db.Column(db.String)
+    seasoning = db.Column(db.Boolean, default=True)
+    cut = db.Column(db.String)
+    size = db.Column(db.String)
     style = db.Column(db.String)
     cheese = db.Column(db.Integer)
     robust_inspired_tomato_sauce = db.Column(db.Integer)
@@ -47,14 +48,15 @@ class Pie(db.model):
     roasted_red_pepper = db.Column(db.Integer)
     feta_cheese = db.Column(db.Integer)
     shredded_parmesan_asiago = db.Column(db.Integer)
-
+    american_cheese = db.Column(db.Integer)
+    shredded_provolone_cheese = db.Column(db.Integer)
 
 
     def to_dict(self):
         return {
             'id' : self.id,
             'order_id' : self.order_id,
-            'easy_order_id' : self.easy_order_id,
+            # 'easy_order_id' : self.easy_order_id,
             'menu_item': self.menu_item,
             'name' : self.name,
             'price': self.price,
@@ -90,5 +92,7 @@ class Pie(db.model):
             'spinach' : self.spinach,
             'roasted_red_pepper': self.roasted_red_pepper,
             'feta_cheese' : self.feta_cheese,
-            'shredded_parmesan_asiago' : self.shredded_parmesan_asiago
+            'shredded_parmesan_asiago' : self.shredded_parmesan_asiago,
+            'american_cheese' : self.american_cheese,
+            'shredded_provolone_cheese' : self.shredded_provolone_cheese
         }
