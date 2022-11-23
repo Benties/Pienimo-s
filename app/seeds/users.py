@@ -4,11 +4,26 @@ from app.models import db, User, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        first_name='Demo',
+        last_name='emod',
+        email='demo@aa.io',
+        password='password',
+        phone_number='111-111-1111',
+        reward_point=30)
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        first_name='marnie',
+        last_name='einram',
+        email='marnie@aa.io',
+        password='password',
+        phone_number='222-222-2222',
+        reward_point=10)
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        first_name='bobbie',
+        last_name='eibbob',
+        email='bobbie@aa.io',
+        password='password',
+        phone_number='333-333-3333',
+        reward_point=40)
 
     db.session.add(demo)
     db.session.add(marnie)
@@ -27,5 +42,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM users")
-        
+
     db.session.commit()
