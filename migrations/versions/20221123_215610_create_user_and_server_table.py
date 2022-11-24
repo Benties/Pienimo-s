@@ -1,8 +1,8 @@
-"""create tables
+"""create user and server table
 
-Revision ID: 45e169830971
+Revision ID: 74927643a8c8
 Revises:
-Create Date: 2022-11-23 18:22:22.882398
+Create Date: 2022-11-23 21:56:10.026055
 
 """
 from alembic import op
@@ -11,8 +11,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = '45e169830971'
+revision = '74927643a8c8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,7 +35,7 @@ def upgrade():
     sa.UniqueConstraint('email')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        __table_args__ = {'schema': SCHEMA}
 
     op.create_table('address',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -55,7 +56,7 @@ def upgrade():
 
     op.create_table('orders',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updatedAt', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
@@ -66,15 +67,16 @@ def upgrade():
 
     op.create_table('pies',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('quantity', sa.Integer(), nullable=False),
     sa.Column('order_id', sa.Integer(), nullable=True),
     sa.Column('menu_item', sa.Boolean(), nullable=True),
     sa.Column('name', sa.String(length=20), nullable=True),
     sa.Column('price', sa.Float(), nullable=False),
-    sa.Column('bake', sa.String(), nullable=True),
+    sa.Column('bake', sa.String(), nullable=False),
     sa.Column('seasoning', sa.Boolean(), nullable=True),
-    sa.Column('cut', sa.String(), nullable=True),
-    sa.Column('size', sa.String(), nullable=True),
-    sa.Column('style', sa.String(), nullable=True),
+    sa.Column('cut', sa.String(), nullable=False),
+    sa.Column('size', sa.String(), nullable=False),
+    sa.Column('style', sa.String(), nullable=False),
     sa.Column('cheese', sa.Integer(), nullable=True),
     sa.Column('robust_inspired_tomato_sauce', sa.Integer(), nullable=True),
     sa.Column('hearty_marinara_sauce', sa.Integer(), nullable=True),
@@ -94,7 +96,7 @@ def upgrade():
     sa.Column('jalapeno_pepper', sa.Integer(), nullable=True),
     sa.Column('onion', sa.Integer(), nullable=True),
     sa.Column('banana_pepper', sa.Integer(), nullable=True),
-    sa.Column('diced_tomatoe', sa.Integer(), nullable=True),
+    sa.Column('diced_tomato', sa.Integer(), nullable=True),
     sa.Column('black_olive', sa.Integer(), nullable=True),
     sa.Column('mushroom', sa.Integer(), nullable=True),
     sa.Column('pineapple', sa.Integer(), nullable=True),
