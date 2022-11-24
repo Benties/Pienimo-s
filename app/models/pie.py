@@ -9,16 +9,17 @@ class Pie(db.Model):
         __table__args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    quantity = db.Column(db.Integer, nullable=False)
     order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=True)
     # easy_order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('easyorders.id')), nullable=True)
     menu_item = db.Column(db.Boolean, default=False)
     name = db.Column(db.String(20))
     price = db.Column(db.Float, nullable=False)
-    bake = db.Column(db.String)
+    bake = db.Column(db.String, nullable=False)
     seasoning = db.Column(db.Boolean, default=True)
-    cut = db.Column(db.String)
-    size = db.Column(db.String)
-    style = db.Column(db.String)
+    cut = db.Column(db.String, nullable=False)
+    size = db.Column(db.String, nullable=False)
+    style = db.Column(db.String, nullable=False)
     cheese = db.Column(db.Integer)
     robust_inspired_tomato_sauce = db.Column(db.Integer)
     hearty_marinara_sauce = db.Column(db.Integer)
@@ -38,7 +39,7 @@ class Pie(db.Model):
     jalapeno_pepper = db.Column(db.Integer)
     onion = db.Column(db.Integer)
     banana_pepper = db.Column(db.Integer)
-    diced_tomatoe = db.Column(db.Integer)
+    diced_tomato = db.Column(db.Integer)
     black_olive = db.Column(db.Integer)
     mushroom = db.Column(db.Integer)
     pineapple = db.Column(db.Integer)
@@ -55,6 +56,7 @@ class Pie(db.Model):
     def to_dict(self):
         return {
             'id' : self.id,
+            'quantity' : self.quantity,
             'order_id' : self.order_id,
             # 'easy_order_id' : self.easy_order_id,
             'menu_item': self.menu_item,
@@ -83,7 +85,7 @@ class Pie(db.Model):
             'jalapeno_pepper' : self.jalapeno_pepper,
             'onion' : self.onion,
             'banana_pepper' : self.banana_pepper,
-            'diced_tomatoe' : self.diced_tomatoe,
+            'diced_tomato' : self.diced_tomato,
             'black_olive' : self.black_olive,
             'mushroom' : self.mushroom,
             'pineapple' : self.pineapple,

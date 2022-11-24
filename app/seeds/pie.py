@@ -2,6 +2,7 @@ from app.models import db, Pie, environment, SCHEMA
 
 def seed_pies():
     ExtravaganZZa = Pie(
+        quantity=1,
         menu_item=True,
         name='ExtravaganZZa',
         price=17.99,
@@ -21,6 +22,7 @@ def seed_pies():
         mushroom=2)
 
     MeatZZA = Pie(
+        quantity=1,
         menu_item=True,
         name='MeatZZA',
         price='17.99',
@@ -36,6 +38,7 @@ def seed_pies():
         pepperoni=2)
 
     Philly_steak = Pie(
+        quantity=1,
         menu_item=True,
         name='Philly Cheese Steak',
         price='17.99',
@@ -52,6 +55,7 @@ def seed_pies():
     )
 
     Pacific_veggie = Pie(
+        quantity=1,
         menu_item=True,
         name='Pacific Veggie',
         price='17.99',
@@ -63,7 +67,7 @@ def seed_pies():
         robust_inspired_tomato_sauce=2,
         shredded_provolone_cheese=2,
         onion=2,
-        diced_tomatoe=2,
+        diced_tomato=2,
         roasted_red_pepper=2,
         black_olive=2,
         feta_cheese=2,
