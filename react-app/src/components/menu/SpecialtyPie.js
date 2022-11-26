@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch, } from "react-redux";
 import { getMenuThunk } from '../../store/menu'
+import { pieDescription } from "./PieDescription";
 
 function SpecialtyPies() {
     const dispatch = useDispatch()
@@ -14,14 +15,19 @@ function SpecialtyPies() {
     if(!menu.length) return null
     return (
     <div>
-        {menu?.map(item =>
-        <li>
+        {menu?.map((item, ind) =>
+        <div>
             {item.name}
-            {(Object.entries(item)
-                .filter(ele => ele[1] !== null && ele[0] !== 'name'))
-                    .map(ele => <li>{ele[0]}</li>)}
+            <li>
+                 {pieDescription[ind]}
+                {/* {(Object.entries(item)
+                    .filter(ele => ele[1] !== null && ele[0] !== 'name'))
+                       .map(ele => <li>{ele[0]}</li>)} */}
 
-        </li>)}
+            </li>
+            <button onClick>Add to Cart</button>
+            <button>Customize</button> {/*onclick display modal for pie builder*/}
+        </div>)}
     </div>
     )
 }
