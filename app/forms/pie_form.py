@@ -11,7 +11,7 @@ class PieForm(FlaskForm):
     cut = StringField('cut', validators=[DataRequired()])
     size = StringField('size', validators=[DataRequired()])
     style = StringField('style', validators=[DataRequired()])
-    cheese = IntegerField('robust_inspired_tomato_sauce')
+    cheese = IntegerField('cheese')
     robust_inspired_tomato_sauce = IntegerField('robust_inspired_tomato_sauce')
     hearty_marinara_sauce = IntegerField('hearty_marinara_sauce')
     honey_bbq_sauce = IntegerField('honey_bbq_sauce')

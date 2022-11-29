@@ -14,7 +14,7 @@ def pie_menu():
     pies = Pie.query.filter_by(menu_item=True).all()
     return {'pies': [pie.to_dict() for pie in pies]}
 
-@pie_routes.route('/', methods=['POST'])
+@pie_routes.route('', methods=['POST'])
 def post_pie():
     '''
     Post a Pie
@@ -25,15 +25,15 @@ def post_pie():
         data = form.data
         new_pie = Pie(quantity=data['quantity'],
                     order_id=data['order_id'],
-                    menu_item=data['menu_item'],
-                    pric=data['price'],
+                    menu_item=False,
+                    price=data['price'],
                     bake=data['bake'],
                     cut=data['cut'],
                     size=data['size'],
                     style=data['style'],
                     cheese=data['cheese'],
                     robust_inspired_tomato_sauce=data['robust_inspired_tomato_sauce'],
-                    hearty_marinara_sauce=['hearty_marinara_sauce'],
+                    hearty_marinara_sauce=data['hearty_marinara_sauce'],
                     honey_bbq_sauce=data['honey_bbq_sauce'],
                     garlic_parmesan_sauce=data['garlic_parmesan_sauce'],
                     alfredo_sauce=data['alfredo_sauce'],

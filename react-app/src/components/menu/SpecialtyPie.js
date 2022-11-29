@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch, } from "react-redux";
 import { getMenuThunk } from '../../store/menu'
+import { createPieThunk } from "../../store/pie";
+import PieFormModal from "../pieBuilder";
 import { pieDescription } from "./PieDescription";
 
 function SpecialtyPies() {
@@ -25,8 +27,8 @@ function SpecialtyPies() {
                        .map(ele => <li>{ele[0]}</li>)} */}
 
             </li>
-            <button onClick>Add to Cart</button>
-            <button>Customize</button> {/*onclick display modal for pie builder*/}
+            <button onClick={()=> dispatch(createPieThunk(item))}>Add to Cart</button>
+            <PieFormModal pie={item}/> {/*onclick display modal for pie builder*/}
         </div>)}
     </div>
     )
