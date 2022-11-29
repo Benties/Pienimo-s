@@ -3,11 +3,12 @@ import thunk from 'redux-thunk';
 import session from './session'
 import menu from './menu'
 import pie from './pie'
-
+import cart from './cart'
 const rootReducer = combineReducers({
   session,
   menu,
-  pie
+  pie,
+  cart
 });
 
 

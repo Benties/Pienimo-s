@@ -28,7 +28,7 @@
     background-color: white;
     border: 1px transparent solid;
     border-radius: 4px;
-    width: 800px;
+    width: fit-content;
     height: fit-content;
     padding: 25px;
     overflow: scroll;

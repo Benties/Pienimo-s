@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/modal';
-import PieForm from './pieForm';
+import CartForm from './cartForm';
 
-function PieFormModal({pie, cart=false }) {
+function CartFormModal() {
   const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="">
-      <button id="customize" onClick={() => {setShowModal(true)}}>{cart === true? 'edit' : 'customize'}</button>
+      <button id="cart" onClick={() => {setShowModal(true)}}>Cart</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <PieForm setShowModal={setShowModal} pie={pie} cart={cart}/>
+          <CartForm setShowModal={setShowModal}/>
         </Modal>
       )}
     </div>
   );
 }
 
-export default PieFormModal;
+export default CartFormModal;

@@ -1,10 +1,11 @@
 import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { createPieThunk } from '../../store/pie'
+import { addToCartThunk } from '../../store/cart'
 import './pieForm.css'
 
 
-const PieForm = ({setShowModal, pie}) => {
+const PieForm = ({setShowModal, pie, cart}) => {
     const dispatch = useDispatch()
     const [size, setSize] = useState(pie.size)
     const [style, setStyle] = useState(pie.style)
@@ -13,7 +14,6 @@ const PieForm = ({setShowModal, pie}) => {
     const [cut, setCut] = useState(pie.cut)
     const [quantity, setQuantity] = useState(pie.quantity)
 
-    console.log(pie.bake)
     const thisPie = {...pie}
     delete thisPie?.name ; delete thisPie.id ; delete thisPie.menu_item ; delete thisPie.size ;
     delete thisPie.style; delete thisPie.bake; delete thisPie.seasoning ; delete thisPie.cut ;
@@ -22,18 +22,26 @@ const PieForm = ({setShowModal, pie}) => {
 
     const [checked, setChecked] = useState(currPie.filter(ele => ele[1] > 0).map(ele => ele[0]))
     const [topping, setTopping] = useState(thisPie)
-
+    // const [currSauce, setSauce] = useState(topping.filter(sauce=> topping.includes(sauce)))
     const removeTopping = (key) => {
         checked.splice(checked.indexOf(key), 1)
         setChecked([...checked])
     }
     const meats = ['ham', 'beef', 'italian_sausage', 'premium_chicken', 'salami', 'bacon', 'pepperoni', 'philly_steak']
     const sauce = ['robust_inspired_tomato_sauce', 'hearty_marinara_sauce', 'honey_bbq_sauce', 'garlic_parmesan_sauce', 'alfredo_sauce', 'ranch']
+    // const [currSauce, setSauce] = useState(topping.filter(sauce => topping.includes(sauce)))
+    // console.log(currSauce)
     const toppingType = (key) => {
         if(String(key) === 'cheese') return 'cheese'
         if(sauce.includes(key)) return 'sauce'
         if(meats.includes(key)) return 'meat'
         return 'vege'
+    }
+
+    const changeSauce = (key) => {
+        checked.splice()
+        checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]))
+        setTopping({...topping, [`${key}`] : Number(2)})
     }
 
     const addToOrder = (e) => {
@@ -47,17 +55,18 @@ const PieForm = ({setShowModal, pie}) => {
             'quantity': quantity,
             ...topping
         }
-        const newPie = dispatch(createPieThunk(payload))
+        const newPie = dispatch(addToCartThunk(payload) )
         setShowModal(false)
         console.log('newpie', newPie)
     }
     return (
         <form className='pie-form' onSubmit={addToOrder}>
             <h1> Pienimo's {pie.name} Pie builder</h1>
-            <div className='size-crust'>
-                Size & Crust
+            <div className='size-crust top-box'>
+                <div className='top-title'>1. Size & Crust</div>
                 <div className='style'>
-                    <label id='small'> Small
+                    <label id='small'>
+                        <h3>Small</h3>
                         <input
                             type='radio'
                             name='size'
@@ -65,7 +74,8 @@ const PieForm = ({setShowModal, pie}) => {
                             onClick={() => setSize('small')}
                             />
                     </label>
-                    <label id='med'> Medium
+                    <label id='med'>
+                        <h3>Medium</h3>
                         <input
                             type='radio'
                             name='size'
@@ -73,7 +83,8 @@ const PieForm = ({setShowModal, pie}) => {
                             onClick={() => setSize('medium')}
                             />
                     </label>
-                    <label id='large'> Large
+                    <label id='large'>
+                        <h3>Large</h3>
                         <input
                             type='radio'
                             name='size'
@@ -81,7 +92,8 @@ const PieForm = ({setShowModal, pie}) => {
                             onClick={() => setSize('large')}
                             />
                     </label>
-                    <label id='x-large'> X-Large
+                    <label id='x-large'>
+                        <h3>X-Large</h3>
                         <input
                             type='radio'
                             name='size'
@@ -123,25 +135,75 @@ const PieForm = ({setShowModal, pie}) => {
                     </label>
                 </div>
             </div>
-            {currPie.map(([key, val]) => (
-                <div className={toppingType(key)}>
-                    {key}
-                    <label>
-                        <input
-                            type='radio'
-                            checked={checked.includes(key)}
-                            onClick={() => checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]), setTopping({...topping, [`${key}`] : Number(2)}))}
-                            />
-                    {checked.includes(key) &&
-                        <select value={topping[`${key}`]}  onChange={(e) => setTopping({...topping, [`${key}`] : Number(e.target.value)})}>
-                            <option value={1}>light</option>
-                            <option value={2}>normal</option>
-                            <option value={3}>extra</option>
-                        </select> }
-                    </label>
-                </div>
-            ))}
-            <div className='special-instructions'> Special Instructions
+            <div className='top-box'>
+                <div className='top-title'>2. CHEESE</div>
+                {currPie.filter(([key, val]) => key === 'cheese').map(([key, val]) => (
+                    <div className={toppingType(key)}>
+                        {key}
+                        <label>
+                            <input
+                                type='radio'
+                                checked={checked.includes(key)}
+                                onClick={() => checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]), setTopping({...topping, [`${key}`] : Number(2)}))}
+                                />
+                        {checked.includes(key) &&
+                            <select value={topping[`${key}`]}  onChange={(e) => setTopping({...topping, [`${key}`] : Number(e.target.value)})}>
+                                <option value={1}>light</option>
+                                <option value={2}>normal</option>
+                                <option value={3}>extra</option>
+                            </select> }
+                        </label>
+                    </div>
+                ))}
+            </div>
+            <div className='top-box'>
+                <div className='top-title'>3. SAUCE</div>
+                {currPie.filter(([key, val]) => sauce.includes(key)).map(([key, val]) => (
+                    <div className={toppingType(key)}>
+                        {key}
+                        <label>
+                            <input
+                                type='radio'
+                                name='sauce'
+                                checked={checked.includes(key)}
+                                // checked={currSauce === String(key)}
+                                // onChange={() => removeTopping(key)}
+                                onClick={() => checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]), setTopping({...topping, [`${key}`] : Number(2)}))}
+                                // onClick={() => (setSauce(key), changeSauce(key), setTopping({...topping, [`${key}`] : Number(2)}))}
+                                />
+                        {checked.includes(key) &&
+                            <select value={topping[`${key}`]}  onChange={(e) => setTopping({...topping, [`${key}`] : Number(e.target.value)})}>
+                                <option value={1}>light</option>
+                                <option value={2}>normal</option>
+                                <option value={3}>extra</option>
+                            </select> }
+                        </label>
+                    </div>
+                ))}
+            </div>
+            <div className='top-box'>
+                <div className='top-title'>4. Toppings</div>
+                {currPie.filter(([key, val]) => key !== 'cheese' && !(sauce.includes(key))).map(([key, val]) => (
+                    <div className={toppingType(key)}>
+                        {key}
+                        <label>
+                            <input
+                                type='radio'
+                                checked={checked.includes(key)}
+                                onClick={() => checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]), setTopping({...topping, [`${key}`] : Number(2)}))}
+                                />
+                        {checked.includes(key) &&
+                            <select value={topping[`${key}`]}  onChange={(e) => setTopping({...topping, [`${key}`] : Number(e.target.value)})}>
+                                <option value={1}>light</option>
+                                <option value={2}>normal</option>
+                                <option value={3}>extra</option>
+                            </select> }
+                        </label>
+                    </div>
+                ))}
+            </div>
+            <div className='special-instructions top-box'>
+                <div className='top-title'>5. Special Instructions</div>
                 <h3>Bake</h3>
                 <label>Well Done
                     <input
@@ -197,8 +259,8 @@ const PieForm = ({setShowModal, pie}) => {
                         onClick={() => setCut('uncut')}/>
                 </label>
             </div>
-            <div className='lastBox'>
-                <div>Special Instructions</div>
+            <div className='lastBox top-box'>
+                <div className='top-title'>MY PIZZA</div>
                 Quantity:
                 <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
                     <option value={1}>1</option>
