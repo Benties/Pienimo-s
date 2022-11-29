@@ -24,27 +24,31 @@ export const addToCartThunk = (payload) => async dispatch => {
 
     let tempId = cart.length ? cart[cart.length-1].tempId + 1 : 0
     // const duplicates = cart.filter(item => item.id === payload.id)
+    let itemsToAdd;
 
-   const itemsToAdd = {
-            ...payload,
-            tempId: tempId++
+    for (const item in cart) {
+        if (cart[item].tempId === payload?.tempId){
+            itemsToAdd = {...payload}
+        }
+    }
+        if (!payload.tempId){
+            itemsToAdd = {
+                ...payload,
+                tempId: tempId++
+            }
         }
 
-        cart[itemsToAdd.tempId] = (itemsToAdd)
+        cart[itemsToAdd?.tempId] = (itemsToAdd)
 
         localStorage.setItem('cart', JSON.stringify(cart))
-        console.log(tempId)
+
         dispatch(addToCart(cart))
 
 }
 
-// export const editFromCartThunk = (payload) => async dispatch => {
-//     const cart = localStorage.getItem('cart') ?
-//         JSON.parse(localStorage.getItem('cart')) : []
+export const removeFromCartThunk = (payload) => async dispatch => {
 
-
-// }
-
+}
 
 
 
@@ -72,6 +76,11 @@ export default function cartReducer(state=INIITAL_STATE, action){
             for (const item in action.payload) {
                 if (!newState.cart[action.payload[item].tempId]){
                     newState.cart[action.payload[item].tempId] = action.payload[item]
+                    } else {
+                        newState.cart[action.payload[item].tempId] = {
+                            ...newState.cart[action.payload[item].tempId],
+                            ...action.payload[item]
+                        }
                     }
                 }
                 return newState

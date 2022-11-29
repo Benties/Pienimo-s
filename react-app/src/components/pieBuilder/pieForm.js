@@ -266,7 +266,7 @@ const PieForm = ({setShowModal, pie, cart}) => {
                     <option value={1}>1</option>
                     <option value={2}>2</option>
                 </select>
-                <button type='submit' id='addOrder'>ADD TO ORDER</button>
+                <button type='submit' id='addOrder'>{cart ? 'SAVE CHANGES' : 'ADD TO ORDER'}</button>
             </div>
         </form>
     )

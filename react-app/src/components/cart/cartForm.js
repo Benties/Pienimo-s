@@ -18,7 +18,7 @@ const CartForm = () => {
     }
 
     return (
-        <div className="cart-container">
+        <form className="cart-container">
             {cart.map(item =>
                 <div className="cart-item-container">
                     {showSize(item.size)}
@@ -30,7 +30,7 @@ const CartForm = () => {
                 </div>
 
             )}
-        </div>
+        </form>
     )
 }
 
