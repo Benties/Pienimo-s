@@ -25,8 +25,7 @@ export const createPieThunk = (payload) => async (dispatch) => {
 
   if (response.ok) {
     const pie = await response.json();
-    // console.log(data)
-    dispatch(addPie(pie))
+    dispatch(addPie(pie.pie))
     return pie;
   } else if (response.status < 500) {
     const data = await response.json();

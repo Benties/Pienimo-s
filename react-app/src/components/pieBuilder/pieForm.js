@@ -35,8 +35,9 @@ const PieForm = ({setShowModal, pie}) => {
         if(meats.includes(key)) return 'meat'
         return 'vege'
     }
-    console.log('topppp',topping)
-    const addToOrder = () => {
+
+    const addToOrder = (e) => {
+        e.preventDefault()
         const payload = {
             'size': size,
             'style': style,
@@ -46,7 +47,9 @@ const PieForm = ({setShowModal, pie}) => {
             'quantity': quantity,
             ...topping
         }
-        dispatch(createPieThunk(payload))
+        const newPie = dispatch(createPieThunk(payload))
+        setShowModal(false)
+        console.log('newpie', newPie)
     }
     return (
         <form className='pie-form' onSubmit={addToOrder}>

@@ -65,5 +65,6 @@ def post_pie():
                     shredded_provolone_cheese=data['shredded_provolone_cheese'])
         db.session.add(new_pie)
         db.session.commit()
+        print ('newwwwwwwwwwww', new_pie.to_dict())
         return {'pie': new_pie.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
