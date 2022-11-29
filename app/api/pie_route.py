@@ -31,6 +31,7 @@ def post_pie():
                     cut=data['cut'],
                     size=data['size'],
                     style=data['style'],
+                    seasoning=data['seasoning'],
                     cheese=data['cheese'],
                     robust_inspired_tomato_sauce=data['robust_inspired_tomato_sauce'],
                     hearty_marinara_sauce=data['hearty_marinara_sauce'],

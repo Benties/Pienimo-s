@@ -1,0 +1,23 @@
+.pieForm{
+    /* display: grid;
+    grid-template-rows: auto; */
+    display: flex;
+    flex-direction: column;
+}
+.cheese{
+    order: 1;
+    /* display: flex; */
+}
+.sauce{
+    order: 2;
+    /* display: flex; */
+}
+.meats{
+    order: 3;
+    /* display: flex; */
+
+}
+.vege{
+    order: 4;
+    /* display: flex; */
+}

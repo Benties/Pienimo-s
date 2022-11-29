@@ -24,20 +24,22 @@
   #modal-content {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: relative;
     background-color: white;
     border: 1px transparent solid;
     border-radius: 4px;
-    width: 400px;
+    width: 800px;
     height: fit-content;
     padding: 25px;
-    overflow: hidden;
+    overflow: scroll;
   }
 
   #modal-content form{
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    /* overflow: scroll; */
   }
 
   #modal-content input{
