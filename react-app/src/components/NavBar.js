@@ -1,40 +1,40 @@
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import LoginFormModal from './auth';
 import LogoutButton from './auth/LogoutButton';
 import CartFormModal from './cart';
-
+import './navBar.css'
 const NavBar = () => {
+  const currentUser = useSelector(state => state?.session?.user)
+
   return (
     <nav>
-      <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-        <li>
-          <CartFormModal/>
-        </li>
-      </ul>
+      <div className='nav-div'>
+        <div className='nav-start'>
+          {/* <div> */}
+            <NavLink to='/' exact={true} activeClassName='active'>
+              HOME
+            </NavLink>
+          {/* </div> */}
+          {/* <div> */}
+            <NavLink to='/menu/pies' exact={true} activeClassName='active'>
+              MENU
+            </NavLink>
+          {/* </div> */}
+        </div>
+          <div className='nav-end'>
+            <div className='nav-log'>
+              {currentUser? <LogoutButton user={currentUser}/> :
+                <LoginFormModal/>
+              }
+            </div>
+            <div className='nav-cart'>
+              <CartFormModal/>
+            </div>
+          </div>
+      </div>
     </nav>
   );
 }

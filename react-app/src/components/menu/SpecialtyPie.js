@@ -27,7 +27,7 @@ function SpecialtyPies() {
                        .map(ele => <li>{ele[0]}</li>)} */}
 
             </li>
-            <button onClick={()=> dispatch(addToCartThunk(item))}>Add to Cart</button>
+            <button className='add-cart' onClick={()=> dispatch(addToCartThunk(item))}>Add to Cart</button>
             <PieFormModal pie={item}/> {/*onclick display modal for pie builder*/}
         </div>)}
     </div>

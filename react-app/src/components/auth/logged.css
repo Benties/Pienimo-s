@@ -1,0 +1,21 @@
+#login{
+    background-color: transparent;
+    border-style: none;
+    color: #FFFFFF;
+}
+
+#logout-butt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-style: none;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 15px;
+}
+
+#logout-butt>div{
+    text-transform: uppercase;
+}

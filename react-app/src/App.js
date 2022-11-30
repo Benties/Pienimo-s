@@ -32,9 +32,9 @@ function App() {
         <Route path='/menu/pies'>
           <SpecialtyPies/>
         </Route>
-        <Route path='/login' exact={true}>
+        {/* <Route path='/login' exact={true}>
           <LoginForm />
-        </Route>
+        </Route> */}
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>

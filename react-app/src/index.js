@@ -5,15 +5,17 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 import { ModalProvider } from './context/modal';
-
+import { CartModalProvider } from './context/cartModal';
 const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ModalProvider>
-          <App />
-        </ModalProvider>
+      <CartModalProvider>
+        <ModalProvider>
+            <App />
+          </ModalProvider>
+      </CartModalProvider>
       </Provider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,0 +1,114 @@
+.cart-modal-container{
+    position:relative;
+    /* width: 64px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 76px;
+
+}
+.cart-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    /* z-index: 10; */
+    /* border:10px solid black; */
+    /* background-color:beige; */
+    /* color: azure; */
+
+    top: 100px;
+    right: -15px;
+    width: 450px;
+
+    box-shadow: 0 0 3px rgb(19, 17, 17);
+    color: #555555;
+    background-color: #FFFFFF;
+    /* padding-top: 700px; */
+
+}
+
+#cart-butt{
+    width: 64px;
+    height: 100%;
+    font-size: 35px;
+    background-color: #006491;
+    border-style: none;
+    /* top */
+
+}
+#cart-count{
+    position: absolute;
+    z-index: 4;
+    top: 4px;
+    right: 5px;
+    border-radius: 30px;
+    width: 18px;
+    height: 18px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+    background-color: #FF0000;
+}
+#card-text{
+    /* z-index: 1; */
+    /* position: absolute; */
+    font-size: 14px;
+    /* bottom: 29px; */
+    margin-bottom: 10px;
+}
+
+.triang{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 38px;
+    border: 1.2em solid transparent;
+    border-color: #fff #fff transparent transparent;
+    transform-origin: 0 0;
+    transform: rotate(-45deg);
+    box-shadow: 3px -3px 3px 0 rgb(0 0 0 / 20%);
+    z-index: 1;
+}
+
+.cart-header{
+    /* width: 434px; */
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    height: 28px;
+    border-bottom: 2px solid #006491;
+    padding: 8px;
+    text-decoration: none solid rgb(85, 85, 85);
+    text-transform: uppercase;
+    color: #006491;
+}
+
+.cart-header > p {
+    display: block;
+    /* width: 92px; */
+    /* height: 28px; */
+    min-width: auto;
+    min-height: auto;
+    /* background-color: aliceblue; */
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    word-spacing: 0;
+}
+
+.cart-header > button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #006491;
+}
+
+.cart-item-container{
+
+}
+
+.cart-bottom{
+
+}
