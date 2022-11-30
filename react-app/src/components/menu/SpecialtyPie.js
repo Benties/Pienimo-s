@@ -5,7 +5,7 @@ import { createPieThunk } from "../../store/pie";
 import PieFormModal from "../pieBuilder";
 import { pieDescription } from "./PieDescription";
 import {addToCartThunk} from "../../store/cart"
-
+import './pieMenu.css'
 function SpecialtyPies() {
     const dispatch = useDispatch()
     const menu = useSelector(state => Object.values(state.menu.menu))
@@ -16,19 +16,23 @@ function SpecialtyPies() {
 
     if(!menu.length) return null
     return (
-    <div>
+    <div id='menu-container'>
         {menu?.map((item, ind) =>
-        <div>
-            {item.name}
-            <li>
+        <div className="menu-items">
+            <h5>
+                {item.name}
+            </h5>
+            <button className='add-cart' onClick={()=> dispatch(addToCartThunk(item))}>Add to Cart</button>
+            <div className="custom-pie-butt">
+                <PieFormModal pie={item}/>
+            </div>
+            <div className="pie-description">
                  {pieDescription[ind]}
                 {/* {(Object.entries(item)
                     .filter(ele => ele[1] !== null && ele[0] !== 'name'))
                        .map(ele => <li>{ele[0]}</li>)} */}
 
-            </li>
-            <button className='add-cart' onClick={()=> dispatch(addToCartThunk(item))}>Add to Cart</button>
-            <PieFormModal pie={item}/> {/*onclick display modal for pie builder*/}
+            </div>
         </div>)}
     </div>
     )
