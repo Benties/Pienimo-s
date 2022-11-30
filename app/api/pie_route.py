@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
-from app.models import Pie, db, Order
+from app.models import Pie, db
 from app.forms import PieForm
-from app.forms import OrderForm
+# from app.forms import OrderForm
 from .auth_routes import validation_errors_to_error_messages
 
 pie_routes = Blueprint('pies', __name__)
@@ -26,7 +26,7 @@ def post_pie():
 
         data = form.data
         new_pie = Pie(quantity=data['quantity'],
-                    order_id=None,
+                    # order_id=None,
                     menu_item=False,
                     price=data['price'],
                     bake=data['bake'],

@@ -65,7 +65,7 @@ def upgrade():
     op.create_table('pies',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('quantity', sa.Integer(), nullable=False),
-    sa.Column('order_id', sa.Integer(), nullable=True),
+    # sa.Column('order_id', sa.Integer(), nullable=True),
     sa.Column('menu_item', sa.Boolean(), nullable=True),
     sa.Column('name', sa.String(length=20), nullable=True),
     sa.Column('price', sa.Float(), nullable=False),
@@ -105,7 +105,7 @@ def upgrade():
     sa.Column('shredded_parmesan_asiago', sa.Integer(), nullable=True),
     sa.Column('american_cheese', sa.Integer(), nullable=True),
     sa.Column('shredded_provolone_cheese', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['order_id'], ['orders.id'], ),
+    # sa.ForeignKeyConstraint(['order_id'], ['orders.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":

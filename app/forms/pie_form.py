@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, ValidationError
 
 class PieForm(FlaskForm):
     quantity = IntegerField('quantity', validators=[DataRequired()])
-    order_id = IntegerField('order_id')
+    # order_id = IntegerField('order_id')
     menu_item = BooleanField('menu_item', )
     price = FloatField('price', validators=[DataRequired()])
     bake = StringField('bake', validators=[DataRequired()])
