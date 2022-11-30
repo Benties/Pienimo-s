@@ -10,7 +10,7 @@ class Pie(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     quantity = db.Column(db.Integer, nullable=False)
-    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), default=0)
+    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=True)
     # easy_order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('easyorders.id')), nullable=True)
     menu_item = db.Column(db.Boolean, default=False)
     name = db.Column(db.String(20))

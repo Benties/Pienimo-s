@@ -26,7 +26,7 @@ def post_pie():
 
         data = form.data
         new_pie = Pie(quantity=data['quantity'],
-                    order_id=data['order_id'],
+                    order_id=None,
                     menu_item=False,
                     price=data['price'],
                     bake=data['bake'],
