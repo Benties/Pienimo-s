@@ -16,24 +16,25 @@ function SpecialtyPies() {
 
     if(!menu.length) return null
     return (
-    <div id='menu-container'>
-        {menu?.map((item, ind) =>
-        <div className="menu-items">
-            <h5>
-                {item.name}
-            </h5>
-            <button className='add-cart' onClick={()=> dispatch(addToCartThunk(item))}>Add to Cart</button>
-            <div className="custom-pie-butt">
-                <PieFormModal pie={item}/>
-            </div>
-            <div className="pie-description">
-                 {pieDescription[ind]}
-                {/* {(Object.entries(item)
-                    .filter(ele => ele[1] !== null && ele[0] !== 'name'))
-                       .map(ele => <li>{ele[0]}</li>)} */}
+    <div className="menu-outer">
+        <h1> Specialty Pies</h1>
+        <div id='menu-container'>
+            {menu?.map((item, ind) =>
+            <div className="menu-items">
+                <h5>{item.name}</h5>
+                <button className='add-cart' onClick={()=> dispatch(addToCartThunk(item))}>Add to Cart</button>
+                <div className="custom-pie-butt">
+                    <PieFormModal pie={item}/>
+                </div>
+                <div className="pie-description">
+                    {pieDescription[ind]}
+                    {/* {(Object.entries(item)
+                        .filter(ele => ele[1] !== null && ele[0] !== 'name'))
+                        .map(ele => <li>{ele[0]}</li>)} */}
 
-            </div>
-        </div>)}
+                </div>
+            </div>)}
+        </div>
     </div>
     )
 }

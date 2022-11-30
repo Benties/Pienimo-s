@@ -3,3 +3,14 @@
     font-family:  Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: bold;
 }
+
+/* #root{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    position: fixed;
+
+} */

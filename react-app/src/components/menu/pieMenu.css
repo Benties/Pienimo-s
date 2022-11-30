@@ -1,0 +1,25 @@
+.menu-outer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.menu-outer>h1{
+    width: 930px;
+    margin-top: 80px;
+}
+#menu-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 930px;
+    height: 1200px;
+}
+
+
+
+.menu-items{
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+}
