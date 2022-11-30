@@ -16,7 +16,6 @@ const loadMenu = (menu) => ({
 // thunks
 export const getMenuThunk = () => async (dispatch) => {
     const response = await fetch(`/api/pies/menu`)
-    console.log('aaaaaaaaaaaaaaaaaaa', response)
 
     if(response.ok){
         const data = await response.json()

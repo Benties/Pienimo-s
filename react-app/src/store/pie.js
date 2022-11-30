@@ -14,7 +14,6 @@ const addPie = (pie) => ({
 
 //thunk
 export const createPieThunk = (payload) => async (dispatch) => {
-  console.log('payloadddddddddddddddddd',payload)
   const response = await fetch('/api/pies', {
     method: 'POST',
     headers: {
@@ -30,7 +29,6 @@ export const createPieThunk = (payload) => async (dispatch) => {
   } else if (response.status < 500) {
     const data = await response.json();
     if (data.errors) {
-      console.log('hi')
       return data.errors;
     }
   } else {

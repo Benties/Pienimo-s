@@ -9,7 +9,6 @@ import {addToCartThunk} from "../../store/cart"
 function SpecialtyPies() {
     const dispatch = useDispatch()
     const menu = useSelector(state => Object.values(state.menu.menu))
-    console.log('menu',menu)
     useEffect(() => {
         dispatch(getMenuThunk())
     },[])

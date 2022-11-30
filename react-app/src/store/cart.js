@@ -1,6 +1,7 @@
 // constants
 const ADD_TO_CART = 'cart/ADD_TO_CART'
 
+const REMOVE_FROM_CART = 'cart/REMOVE_FROM_CART'
 
 
 
@@ -13,12 +14,16 @@ const addToCart = (payload) => ({
     payload
 })
 
-
+const removeFromCart = (payload => ({
+    type: REMOVE_FROM_CART,
+    payload
+}))
 
 
 //thunks
 
 export const addToCartThunk = (payload) => async dispatch => {
+
     const cart = localStorage.getItem('cart') ?
         JSON.parse(localStorage.getItem('cart')) : []
 
@@ -26,17 +31,17 @@ export const addToCartThunk = (payload) => async dispatch => {
     // const duplicates = cart.filter(item => item.id === payload.id)
     let itemsToAdd;
 
+    if (!payload.tempId){
+        itemsToAdd = {
+            ...payload,
+            tempId: tempId++
+        }
+    }
     for (const item in cart) {
         if (cart[item].tempId === payload?.tempId){
             itemsToAdd = {...payload}
         }
     }
-        if (!payload.tempId){
-            itemsToAdd = {
-                ...payload,
-                tempId: tempId++
-            }
-        }
 
         cart[itemsToAdd?.tempId] = (itemsToAdd)
 
@@ -47,7 +52,12 @@ export const addToCartThunk = (payload) => async dispatch => {
 }
 
 export const removeFromCartThunk = (payload) => async dispatch => {
+    const cart = JSON.parse(localStorage.getItem('cart'))
+    // const newCart = cart.filter(item=> item.tempId !== payload.tempId)
+    cart.splice(cart.indexOf(payload), 1)
 
+    localStorage.setItem('cart', JSON.stringify(cart))
+    dispatch(removeFromCart(payload))
 }
 
 
@@ -57,16 +67,16 @@ export const removeFromCartThunk = (payload) => async dispatch => {
 
 //reducers
 let INIITAL_STATE = {
-    cart: []
+    cart: {}
 }
 if (localStorage.getItem('cart')) {
     let cartStorage = JSON.parse(localStorage.getItem('cart'))
-    console.log(cartStorage)
     for (const item in cartStorage){
         INIITAL_STATE.cart[cartStorage[item].tempId] = {...cartStorage[item]}
+        // INIITAL_STATE.cart
     }
 } else {
-    INIITAL_STATE.cart = []
+    INIITAL_STATE.cart = {}
 }
 
 export default function cartReducer(state=INIITAL_STATE, action){
@@ -84,9 +94,13 @@ export default function cartReducer(state=INIITAL_STATE, action){
                     }
                 }
                 return newState
+        case REMOVE_FROM_CART:
+                const removedState = {...state}
+                delete removedState.cart[action.payload.tempId]
+                return removedState
 
-            default:
-                return state
+        default:
+            return state
             }
         }
 

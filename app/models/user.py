@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     phone_number = db.Column(db.String, nullable=False)
     reward_point = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
-    updatedAt = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
+    updated_at = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
 
 
     @property

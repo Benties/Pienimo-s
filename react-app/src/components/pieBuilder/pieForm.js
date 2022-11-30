@@ -57,7 +57,6 @@ const PieForm = ({setShowModal, pie, cart}) => {
         }
         const newPie = dispatch(addToCartThunk(payload) )
         setShowModal(false)
-        console.log('newpie', newPie)
     }
     return (
         <form className='pie-form' onSubmit={addToOrder}>
