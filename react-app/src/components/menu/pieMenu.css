@@ -12,6 +12,7 @@
 #menu-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
     width: 930px;
     height: 1200px;
 }
@@ -42,7 +43,7 @@
 
 .custom-pie-butt>button{
     height: 100px;
-    width: 100px;
+    /* width: 100px; */
 }
 
 .pie-description{

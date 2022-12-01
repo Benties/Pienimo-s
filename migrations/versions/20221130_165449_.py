@@ -25,7 +25,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('quantity', sa.Integer(), nullable=False),
     sa.Column('menu_item', sa.Boolean(), nullable=True),
-    sa.Column('name', sa.String(length=20), nullable=True),
+    sa.Column('name', sa.String(length=50), nullable=True),
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('bake', sa.String(), nullable=False),
     sa.Column('seasoning', sa.Boolean(), nullable=True),

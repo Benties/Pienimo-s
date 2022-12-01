@@ -13,7 +13,7 @@ class Pie(db.Model):
     # order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=True)
     # easy_order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('easyorders.id')), nullable=True)
     menu_item = db.Column(db.Boolean, default=False)
-    name = db.Column(db.String(20))
+    name = db.Column(db.String(50))
     price = db.Column(db.Float, nullable=False)
     bake = db.Column(db.String, nullable=False)
     seasoning = db.Column(db.Boolean, default=True)
