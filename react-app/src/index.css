@@ -14,3 +14,7 @@
     position: fixed;
 
 } */
+
+button{
+    cursor: pointer;
+}

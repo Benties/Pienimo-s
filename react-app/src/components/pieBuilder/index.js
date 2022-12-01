@@ -5,8 +5,8 @@ import PieForm from './pieForm';
 function PieFormModal({pie, cart=false }) {
   const [showModal, setShowModal] = useState(false);
   return (
-    <div className="">
-      <button id="customize" onClick={(e) => (e.preventDefault(), setShowModal(true))}>{cart === true? 'edit' : 'customize'}</button>
+    <div>
+      <button id={cart? 'edit-item': 'customize'} onClick={(e) => (e.preventDefault(), setShowModal(true))}>{cart === true? 'edit' : 'customize'}</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <PieForm setShowModal={setShowModal} pie={pie} cart={cart}/>

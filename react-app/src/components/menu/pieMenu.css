@@ -23,3 +23,31 @@
     flex-direction: column;
     height: 350px;
 }
+
+.add-cart{
+    height: 37px;
+    font-size: 20px;
+    line-height: 18px;
+    letter-spacing: .486px;
+    text-transform: uppercase;
+    border: none;
+    background-color: #E31837;
+    color: #FFFFFF;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 10px 10px 9px 10px;
+}
+
+.custom-pie-butt>button{
+    height: 100px;
+    width: 100px;
+}
+
+.pie-description{
+    margin-top: 10px;
+    /* text-align: left; */
+    color: #555555;
+    font-size: 12px;
+}

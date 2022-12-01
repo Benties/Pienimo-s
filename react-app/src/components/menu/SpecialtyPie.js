@@ -31,7 +31,6 @@ function SpecialtyPies() {
                     {/* {(Object.entries(item)
                         .filter(ele => ele[1] !== null && ele[0] !== 'name'))
                         .map(ele => <li>{ele[0]}</li>)} */}
-
                 </div>
             </div>)}
         </div>

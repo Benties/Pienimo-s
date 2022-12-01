@@ -226,10 +226,10 @@ def seed_pies():
     )
 
 
-    db.session.add(ExtravaganZZa)
-    # db.session.add_all([ExtravaganZZa, MeatZZA, Philly_steak, Pacific_veggie,
-    # Honolulu_hawaiian, Deluxe, Cali_chicken_bacon_ranch, Buffalo_chicken,
-    # Ultimate_pepperoni, Memphis_bbq_chicken, Wisconsin_6_cheese, Spinach_feta ])
+    # db.session.add(ExtravaganZZa)
+    db.session.add_all([ExtravaganZZa, MeatZZA, Philly_steak, Pacific_veggie,
+    Honolulu_hawaiian, Deluxe, Cali_chicken_bacon_ranch, Buffalo_chicken,
+    Ultimate_pepperoni, Memphis_bbq_chicken, Wisconsin_6_cheese, Spinach_feta ])
     db.session.commit()
 
 def undo_pies():

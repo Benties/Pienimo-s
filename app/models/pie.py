@@ -6,7 +6,7 @@ class Pie(db.Model):
     __tablename__ = 'pies'
 
     if environment == 'production':
-        __table__args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     quantity = db.Column(db.Integer, nullable=False)
