@@ -2,6 +2,7 @@
     background-color: transparent;
     border-style: none;
     color: #FFFFFF;
+    background: rgba(0, 0, 0, .3);
 }
 
 #logout-butt{
@@ -11,9 +12,11 @@
     align-items: center;
     background-color: transparent;
     border-style: none;
+    background: rgba(0, 0, 0, .3);
     color: #FFFFFF;
     text-align: center;
     line-height: 15px;
+    width: 100%;
 }
 
 #logout-butt>div{

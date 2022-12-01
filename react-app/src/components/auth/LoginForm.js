@@ -36,7 +36,7 @@ const LoginForm = ({setShowModal}) => {
     history.push('/sign-up')
   }
   return (
-    <div>
+    <div id=''>
       <button onClick={() => signUp()}>JOIN NOW</button>
       <form onSubmit={onLogin}>
         <div>

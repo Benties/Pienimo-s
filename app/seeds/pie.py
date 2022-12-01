@@ -4,6 +4,7 @@ def seed_pies():
     ExtravaganZZa = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/kTEe5q9.jpg',
         name='ExtravaganZZa',
         price=17.99,
         bake='normal',
@@ -25,6 +26,7 @@ def seed_pies():
     MeatZZA = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/4TTMWbo.jpg',
         name='MeatZZA',
         price='17.99',
         bake='normal',
@@ -42,6 +44,7 @@ def seed_pies():
     Philly_steak = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/zvp0MQ8.jpg',
         name='Philly Cheese Steak',
         price='17.99',
         bake='normal',
@@ -60,6 +63,7 @@ def seed_pies():
     Pacific_veggie = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/OvXxNuT.jpg',
         name='Pacific Veggie',
         price='17.99',
         bake='normal',
@@ -81,6 +85,7 @@ def seed_pies():
     Honolulu_hawaiian = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/ELFH2OM.jpg',
         name='Honolulu Hawaiian',
         price='17.99',
         bake='normal',
@@ -100,6 +105,7 @@ def seed_pies():
     Deluxe = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/7kIarWC.jpg',
         name='Deluxe',
         price='17.99',
         bake='normal',
@@ -119,6 +125,7 @@ def seed_pies():
     Cali_chicken_bacon_ranch = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/CbwmvaK.jpg',
         name='Cali Chicken Bacon Ranch',
         price='17.99',
         bake='normal',
@@ -137,6 +144,7 @@ def seed_pies():
     Buffalo_chicken = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/SyflGnd.jpg',
         name='Buffalo Chicken',
         price='17.99',
         bake='normal',
@@ -155,6 +163,7 @@ def seed_pies():
     Ultimate_pepperoni = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/sOfeKZ6.jpg',
         name='Ultimate Pepperoni',
         price='17.99',
         bake='normal',
@@ -173,6 +182,7 @@ def seed_pies():
     Memphis_bbq_chicken = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/4eC5Wd7.jpg',
         name='Memphis BBQ Chicken',
         price='17.99',
         bake='normal',
@@ -191,6 +201,7 @@ def seed_pies():
     Wisconsin_6_cheese = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/9d7fucy.jpg',
         name='Wisconsin 6 Cheese',
         price='17.99',
         bake='normal',
@@ -209,6 +220,7 @@ def seed_pies():
     Spinach_feta = Pie(
         quantity=1,
         menu_item=True,
+        pie_img='https://i.imgur.com/edGSG8C.jpg',
         name='Spinach & Feta',
         price='17.99',
         bake='normal',

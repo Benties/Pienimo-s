@@ -12,6 +12,7 @@ class Pie(db.Model):
     quantity = db.Column(db.Integer, nullable=False)
     # order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('orders.id')), nullable=True)
     # easy_order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('easyorders.id')), nullable=True)
+    pie_img = db.Column(db.String, nullable=False)
     menu_item = db.Column(db.Boolean, default=False)
     name = db.Column(db.String(50))
     price = db.Column(db.Float, nullable=False)
@@ -59,6 +60,7 @@ class Pie(db.Model):
             'quantity' : self.quantity,
             # 'order_id' : self.order_id,
             # 'easy_order_id' : self.easy_order_id,
+            'pie_img': self.pie_img,
             'menu_item': self.menu_item,
             'name' : self.name,
             'price': self.price,

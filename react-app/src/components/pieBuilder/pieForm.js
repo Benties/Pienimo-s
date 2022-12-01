@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useRef} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { createPieThunk } from '../../store/pie'
 import { addToCartThunk } from '../../store/cart'
@@ -6,6 +6,7 @@ import './pieForm.css'
 
 
 const PieForm = ({setShowModal, pie, cart}) => {
+    const pieBuilder = useRef(null)
     const dispatch = useDispatch()
     const [size, setSize] = useState(pie.size)
     const [style, setStyle] = useState(pie.style)
@@ -17,7 +18,7 @@ const PieForm = ({setShowModal, pie, cart}) => {
     const thisPie = {...pie}
     delete thisPie?.name ; delete thisPie.id ; delete thisPie.menu_item ; delete thisPie.size ;
     delete thisPie.style; delete thisPie.bake; delete thisPie.seasoning ; delete thisPie.cut ;
-    delete thisPie.quantity
+    delete thisPie.quantity; delete thisPie.pie_img;
     const currPie = Object.entries(thisPie)
 
     const [checked, setChecked] = useState(currPie.filter(ele => ele[1] > 0).map(ele => ele[0]))
@@ -38,15 +39,17 @@ const PieForm = ({setShowModal, pie, cart}) => {
         return 'vege'
     }
 
-    const changeSauce = (key) => {
-        checked.splice()
-        checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]))
-        setTopping({...topping, [`${key}`] : Number(2)})
-    }
+    // const changeSauce = (key) => {
+    //     checked.splice()
+    //     checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]))
+    //     setTopping({...topping, [`${key}`] : Number(2)})
+    // }
 
     const addToOrder = (e) => {
         e.preventDefault()
         const payload = {
+            'name' : pie.name? pie.name : null,
+            'pie_img' : pie.pie_img ? pie.pie_img : 'https://i.imgur.com/qMF3XHK.jpg',
             'size': size,
             'style': style,
             'bake' : bake,
@@ -57,10 +60,11 @@ const PieForm = ({setShowModal, pie, cart}) => {
         }
         const newPie = dispatch(addToCartThunk(payload) )
         setShowModal(false)
+        e.stopPropagation()
     }
     return (
-        <form className='pie-form' onSubmit={addToOrder}>
-            <h1> Pienimo's {pie.name} Pie builder</h1>
+        <form ref={pieBuilder} className='pie-form' onSubmit={addToOrder}>
+            <h1> Pienimo's {pie?.name} Pie builder</h1>
             <div className='size-crust top-box'>
                 <div className='top-title'>1. Size & Crust</div>
                 <div className='style'>
@@ -182,7 +186,7 @@ const PieForm = ({setShowModal, pie, cart}) => {
             </div>
             <div className='top-box'>
                 <div className='top-title'>4. Toppings</div>
-                {currPie.filter(([key, val]) => key !== 'cheese' && !(sauce.includes(key))).map(([key, val]) => (
+                {currPie.filter(([key, val]) => key !== 'cheese' && key !== 'tempId' && !(sauce.includes(key))).map(([key, val]) => (
                     <div className={toppingType(key)}>
                         {key}
                         <label>

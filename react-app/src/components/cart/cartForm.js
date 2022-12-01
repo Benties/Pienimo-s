@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react"
-import { addToCartThunk, removeFromCartThunk } from "../../store/cart"
+import { addToCartThunk, emptyCartThunk, removeFromCartThunk } from "../../store/cart"
 import { createPieThunk } from "../../store/pie"
 import PieFormModal from "../pieBuilder"
 import './cart.css'
@@ -28,7 +28,9 @@ const CartForm = ({setShowModal}) => {
     const checkout = async () => {
        await cart.forEach(item => dispatch(createPieThunk(item)))
        localStorage.removeItem('cart')
+       dispatch(emptyCartThunk(cart))
        setShowModal(false)
+
     }
 
     const changeAmt = (item, e) => {
@@ -43,20 +45,29 @@ const CartForm = ({setShowModal}) => {
                     <p>your cart</p>
                     <button onClick={()=> setShowModal(false)}>X</button>
                 </div>
-                {cart.map(item =>
-                    <div className="cart-item-container">
-                        {showSize(item.size)}
-                        {showStyle(item.style)}
-                        {item.name? item.name : ' Pizza'}
-                        <select value={item.quantity} onChange={(e) => changeAmt(item, e)}>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            {/* <option value={3}>3</option> */}
-                        </select>
-                        <PieFormModal pie={item} cart={true}/>
-                        <button onClick={(e) => (e.preventDefault(), removeItem(item))}>Remove</button>
-                    </div>
-                )}
+                <div id='cart-body'>
+                    {cart.map(item =>
+                        <div className="cart-item-container">
+                            <div>
+                                <img src={item.pie_img} className='cart-img'/>
+                                {showSize(item.size)}
+                                {showStyle(item.style)}
+                                {item.name? item.name : ' Pizza'}
+                            </div>
+                            <div className="lower-body">
+                                Quantity:
+                                <select value={item.quantity} onChange={(e) => changeAmt(item, e)}>
+                                    <option value={1}>1</option>
+                                    <option value={2}>2</option>
+                                </select>
+                                <div className="lower-bot">
+                                    <PieFormModal pie={item} cart={true}/>
+                                    <button onClick={(e) => (e.preventDefault(), removeItem(item))}>Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
                 <div className="cart-bottom">
                     <div>Subtotal: ${cart.reduce((accum, val)=> accum + val.price,0)}</div>
                     {cart.length ? <button type='submit'>CHECKOUT</button> : null}

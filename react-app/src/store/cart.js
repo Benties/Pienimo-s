@@ -1,9 +1,11 @@
+
+
 // constants
 const ADD_TO_CART = 'cart/ADD_TO_CART'
 
 const REMOVE_FROM_CART = 'cart/REMOVE_FROM_CART'
 
-
+const EMPTY_CART = 'cart/EMPTY_CART'
 
 
 
@@ -16,6 +18,11 @@ const addToCart = (payload) => ({
 
 const removeFromCart = (payload => ({
     type: REMOVE_FROM_CART,
+    payload
+}))
+
+const emptyCart = (payload => ({
+    type: EMPTY_CART,
     payload
 }))
 
@@ -60,6 +67,10 @@ export const removeFromCartThunk = (payload) => async dispatch => {
     dispatch(removeFromCart(payload))
 }
 
+export const emptyCartThunk = (payload) => async dispatch => {
+    dispatch(emptyCart(payload))
+}
+
 
 
 
@@ -98,7 +109,10 @@ export default function cartReducer(state=INIITAL_STATE, action){
                 const removedState = {...state}
                 delete removedState.cart[action.payload.tempId]
                 return removedState
-
+        case EMPTY_CART:
+            const emptyState = {...state}
+                emptyState.cart = {}
+                return emptyState
         default:
             return state
             }

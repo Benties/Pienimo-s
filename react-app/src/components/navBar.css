@@ -12,6 +12,8 @@ nav{
     right: 0;
     background-color: #006491;
     color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 13px 0px;
+    text-decoration: none solid rgb(255, 255, 255)
 }
 
 .nav-div{
@@ -44,16 +46,12 @@ nav{
     color: #FFFFFF;
 }
 .nav-start>*:hover{
-    filter: brightness(55%);
-    background-color: rgba(0, 100, 145, .5);
-    color: #FFFFFF;
+    background: rgba(0, 0, 0, .3);
 }
 
 
 .active{
-    filter: brightness(55%);
-    background-color: rgba(0, 100, 145, .5);
-    color: #FFFFFF;
+    background: rgba(0, 0, 0, .3);
 }
 
 .nav-end{

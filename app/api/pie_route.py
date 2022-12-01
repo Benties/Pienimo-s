@@ -28,6 +28,7 @@ def post_pie():
         new_pie = Pie(quantity=data['quantity'],
                     # order_id=None,
                     menu_item=False,
+                    pie_img=data['pie_img'],
                     price=data['price'],
                     bake=data['bake'],
                     cut=data['cut'],
@@ -67,6 +68,6 @@ def post_pie():
                     shredded_provolone_cheese=data['shredded_provolone_cheese'])
         db.session.add(new_pie)
         db.session.commit()
-        print ('newwwwwwwwwwww', new_pie.to_dict())
+        # print ('newwwwwwwwwwww', new_pie.to_dict())
         return {'pie': new_pie.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

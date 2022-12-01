@@ -8,6 +8,11 @@
 .menu-outer>h1{
     width: 930px;
     margin-top: 80px;
+    line-height: 42px;
+    font-size: 41px;
+    font-weight: 700;
+    text-decoration: none solid rgb(51, 51, 51);
+    color:#333333;
 }
 #menu-container{
     display: grid;
@@ -22,7 +27,14 @@
 .menu-items{
     display: flex;
     flex-direction: column;
-    height: 350px;
+    height: 450px;
+}
+
+.menu-items>img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+
 }
 
 .add-cart{

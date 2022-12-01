@@ -17,10 +17,11 @@ function SpecialtyPies() {
     if(!menu.length) return null
     return (
     <div className="menu-outer">
-        <h1> Specialty Pies</h1>
+        <h1> SPECIALTY PIES</h1>
         <div id='menu-container'>
             {menu?.map((item, ind) =>
             <div className="menu-items">
+                <img src={item.pie_img}/>
                 <h5>{item.name}</h5>
                 <button className='add-cart' onClick={()=> dispatch(addToCartThunk(item))}>Add to Cart</button>
                 <div className="custom-pie-butt">
