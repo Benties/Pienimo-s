@@ -55,60 +55,89 @@ const SignUpForm = () => {
   return (
     <div id='sign-up-outer-most'>
       <div id='sign-up-outer-container'>
-        <form onSubmit={onSignUp}>
+        <img id='join-img-logo'src='https://i.imgur.com/mHyNKq5.png'/>
+        <div id='piece-banner'>PIECE OF THE PIE</div>
+        <div id='reward-banner'>REWARDS</div>
+        {/* <img src='https://i.imgur.com/mHyNKq5.png'/> */}
+        <div id='join-text'>JOIN TO START EARNING POINTS TOWARD FREE PIE!</div>
+        <form id='sign-up-form'onSubmit={onSignUp}>
           <div>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
           </div>
-          <div>
-            <label>First Name</label>
+          <div className='form-input'>
+            <label>
+              <span className='sign-up-span'>*</span>
+              First Name
+            </label>
             <input
+              className='sign-up-input'
               type='text'
               name='firstname'
               onChange={updateFirstName}
               value={firstName}
             ></input>
           </div>
-          <div>
-            <label>Last Name</label>
+          <div className='form-input'>
+            <label>
+              <span className='sign-up-span'>*</span>
+              Last Name
+            </label>
             <input
+              className='sign-up-input'
               type='text'
               name='lastname'
               onChange={updateLastName}
               value={lastName}
             ></input>
           </div>
-          <div>
-            <label>Email</label>
+          <div className='form-input'>
+            <label>
+              <span className='sign-up-span'>*</span>
+              Email
+            </label>
             <input
+            className='sign-up-input'
               type='text'
               name='email'
               onChange={updateEmail}
               value={email}
             ></input>
           </div>
-          <div>
-            <label>Phone Number</label>
+          <div className='form-input'>
+            <label>
+              <span className='sign-up-span'>*</span>
+              Phone Number
+            </label>
             <input
+            className='sign-up-input'
               type='text'
               name='number'
               onChange={updateNumber}
               value={number}
             ></input>
           </div>
-          <div>
-            <label>Password</label>
+          <div className='form-input'>
+            <label>
+              <span className='sign-up-span'>*</span>
+              Password
+            </label>
             <input
+            className='sign-up-input'
               type='password'
               name='password'
               onChange={updatePassword}
               value={password}
             ></input>
           </div>
-          <div>
-            <label>Repeat Password</label>
+          <div className='form-input'>
+            <label>
+              <span className='sign-up-span'>*</span>
+              Confirm Password
+            </label>
             <input
+            className='sign-up-input'
               type='password'
               name='repeat_password'
               onChange={updateRepeatPassword}
@@ -116,7 +145,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <button type='submit'>Sign Up</button>
+          <button id='sign-up-butt'type='submit'>JOIN NOW</button>
         </form>
       </div>
     </div>

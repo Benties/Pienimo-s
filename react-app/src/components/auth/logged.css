@@ -22,3 +22,8 @@
 #logout-butt>div{
     text-transform: uppercase;
 }
+
+#sign-in-container{
+    display: flex;
+    flex-direction: column;
+}

@@ -45,6 +45,24 @@ nav{
     text-transform: capitalize;
     color: #FFFFFF;
 }
+
+
+.nav-logo {
+    width:60px;
+    height:100%;
+    object-fit: scale-down;
+}
+
+.nav-logo:hover {
+    filter: brightness(0.7);
+    background: rgba(0, 0, 0, .3);
+}
+
+.nav-logo.click {
+    filter: brightness(0.7);
+    background: rgba(0, 0, 0, .3);
+}
+
 .nav-start>*:hover{
     background: rgba(0, 0, 0, .3);
 }
@@ -53,6 +71,13 @@ nav{
 .active{
     background: rgba(0, 0, 0, .3);
 }
+
+/* #link-to-logo .active {
+    position: absolute;
+    z-index: 10;
+    filter: brightness(0.7);
+    background: #000000;
+} */
 
 .nav-end{
     display: flex;

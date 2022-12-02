@@ -36,9 +36,14 @@ const LoginForm = ({setShowModal}) => {
     history.push('/sign-up')
   }
   return (
-    <div id=''>
-      <button onClick={() => signUp()}>JOIN NOW</button>
-      <form onSubmit={onLogin}>
+    <div id='sign-in-container'>
+      <div id='sign-in-header'>SIGN IN TO YOUR PIE PROFILE</div>
+      <div id='sign-in-top'>
+        <img id='sign-in-logo' src='https://i.imgur.com/mHyNKq5.png'/>
+        Earn free pizza, get exclusice deals, and check out faster!
+      </div>
+      <button onClick={() => signUp()} id='join-butt'>JOIN NOW</button>
+      <form onSubmit={onLogin} id='sign-in-form'>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
@@ -63,7 +68,8 @@ const LoginForm = ({setShowModal}) => {
             value={password}
             onChange={updatePassword}
           />
-          <button type='submit'>Login</button>
+          <button id='login-butt' type='submit'>SIGN IN FOR THIS ORDER</button>
+          <button id='demo-log-in'>DEMO SIGN IN</button>
         </div>
       </form>
 

@@ -29,7 +29,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/menu/pies'>
+        <Route path='/menu/pies' exact={true}>
           <SpecialtyPies/>
         </Route>
         {/* <Route path='/login' exact={true}>
