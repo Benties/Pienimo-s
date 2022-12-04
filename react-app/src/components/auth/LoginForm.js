@@ -11,6 +11,11 @@ const LoginForm = ({setShowModal}) => {
   const dispatch = useDispatch();
   const history = useHistory()
 
+  const demoLog = () => {
+    setEmail('demo@aa.io')
+    setPassword('password')
+  }
+
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -44,14 +49,15 @@ const LoginForm = ({setShowModal}) => {
       </div>
       <button onClick={() => signUp()} id='join-butt'>JOIN NOW</button>
       <form onSubmit={onLogin} id='sign-in-form'>
-        <div>
+        <div className='error-div'>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
         <div>
-          <label htmlFor='email'>Email</label>
+          <label className='sign-in-label' htmlFor='email'>Email</label>
           <input
+            id='sign-in-input'
             name='email'
             type='text'
             placeholder='Email'
@@ -60,8 +66,9 @@ const LoginForm = ({setShowModal}) => {
           />
         </div>
         <div>
-          <label htmlFor='password'>Password</label>
+          <label className='sign-in-label' htmlFor='password'>Password</label>
           <input
+            id='sign-in-input'
             name='password'
             type='password'
             placeholder='Password'
@@ -69,7 +76,7 @@ const LoginForm = ({setShowModal}) => {
             onChange={updatePassword}
           />
           <button id='login-butt' type='submit'>SIGN IN FOR THIS ORDER</button>
-          <button id='demo-log-in'>DEMO SIGN IN</button>
+          <button id='demo-log-in' type='submit' onClick={()=> demoLog()}>DEMO SIGN IN</button>
         </div>
       </form>
 

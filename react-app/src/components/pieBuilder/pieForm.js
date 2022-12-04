@@ -48,6 +48,7 @@ const PieForm = ({setShowModal, pie, cart}) => {
     const addToOrder = (e) => {
         e.preventDefault()
         const payload = {
+            'price' : pie.price *= parseFloat(quantity),
             'name' : pie.name? pie.name : null,
             'pie_img' : pie.pie_img ? pie.pie_img : 'https://i.imgur.com/qMF3XHK.jpg',
             'size': size,
@@ -59,15 +60,17 @@ const PieForm = ({setShowModal, pie, cart}) => {
             ...topping
         }
         const newPie = dispatch(addToCartThunk(payload) )
+        console.log('thismy newpie',payload)
         setShowModal(false)
         e.stopPropagation()
     }
     return (
-        <form ref={pieBuilder} className='pie-form' onSubmit={addToOrder}>
-            <h1> Pienimo's {pie?.name} Pie builder</h1>
+        <form ref={pieBuilder} id='pie-form' onSubmit={addToOrder}>
+            <h1 id='builder-title'> Pienimo's Pie builder</h1>
+            <div id='left-box-builder'>
             <div className='size-crust top-box'>
-                <div className='top-title'>1. Size & Crust</div>
-                <div className='style'>
+                <div className='top-title'>1. SIZE & CRUST</div>
+                <div className='size'>
                     <label id='small'>
                         <h3>Small</h3>
                         <input
@@ -261,6 +264,7 @@ const PieForm = ({setShowModal, pie, cart}) => {
                         checked={cut === 'uncut'}
                         onClick={() => setCut('uncut')}/>
                 </label>
+            </div>
             </div>
             <div className='lastBox top-box'>
                 <div className='top-title'>MY PIZZA</div>

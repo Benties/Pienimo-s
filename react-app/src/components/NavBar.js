@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
@@ -15,7 +14,6 @@ const NavBar = () => {
   const closeMenu = (e)=>{
     if(logoClick.current && clicked && !logoClick.current.contains(e.target)){
       setClick(false)
-      console.log('BRIN<3')
     }
   }
 

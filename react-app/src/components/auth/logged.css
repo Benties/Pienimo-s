@@ -26,4 +26,104 @@
 #sign-in-container{
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 550px;
+    height: 450px;
+    max-height: fit-content;
+
+}
+
+#sign-in-header{
+    /* box-sizing: border-box; */
+    /* text-align:left; */
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 48px;
+    text-decoration: none solid rgb(51,51,51);
+    word-spacing: 0px;
+    color:#333333;
+}
+
+
+#sign-in-top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#sign-in-logo{
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+}
+
+#join-butt{
+    height: 40px;
+    width: 100px;
+    font-size: 15px;
+    font-family: 'Arial Narrow';
+    text-align: center;
+    text-decoration: none solid rgb(0,88,124);
+    border: 2px solid #00587C;
+    background-color: #FFFFFF;
+    color: #00587C;
+    margin-bottom: 20px;
+}
+
+#sign-in-form{
+    width: 344px;
+    height: 350px;
+    display: block;
+    max-height: fit-content;
+}
+
+.sign-in-label{
+
+}
+
+#sign-in-input{
+    display: block;
+    height: 30px;
+    width: 333px;
+    font-size: 11px;
+    line-height: 14.5px;
+    color: #333333;
+    background-color: #FFFFFF;
+    border: 1px solid #ADADAD;
+}
+
+#login-butt{
+    width: 100%;
+    height: 53px;
+    font-size: 24px;
+    color: #FFFFFF;
+    background-color:#006491 ;
+    border: none;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius:3px;
+}
+
+#demo-log-in{
+    width: 100%;
+    height: 53px;
+    font-size: 24px;
+    color: #FFFFFF;
+    background-color:#E31837 ;
+    border: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius:3px;
+    /* margin-bottom: 10px; */
+}
+
+
+.error-div{
+    color: #E31837;
+    font-size:15px;
 }

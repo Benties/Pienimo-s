@@ -53,6 +53,7 @@ const CartForm = ({setShowModal}) => {
                                 {showSize(item.size)}
                                 {showStyle(item.style)}
                                 {item.name? item.name : ' Pizza'}
+                                llllllllllll {item.price = parseFloat(item.quantity) * 17.99}
                             </div>
                             <div className="lower-body">
                                 Quantity:

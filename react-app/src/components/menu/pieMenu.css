@@ -19,7 +19,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 20px;
     width: 930px;
-    height: 1200px;
+    /* height: 1200px; */
 }
 
 

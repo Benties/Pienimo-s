@@ -1,14 +1,47 @@
-.pieForm{
-    /* display: grid;
-    grid-template-rows: auto; */
+#pie-form{
     display: flex;
     flex-direction: column;
+    width: 850px;
+
+    /* margin: 10px 10px 10px 10px; */
+    /* flex-direction: column; */
+
 }
+
+#builder-title{
+    width: 100%;
+    text-align: left;
+    margin-left: 15px;
+}
+
+#left-box-builder{
+    display: flex;
+    flex-direction: column;
+    width: 475px;
+    margin: 10px 10px 10px 10px;
+}
+
+
 .top-box{
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 4px;
     margin: 5px;
 }
+
+.top-title{
+    display: flex;
+    align-items: center;
+    height: 35px;
+    font-size: 17px;
+    color: #FFFFFF;
+    background-color: #006491;
+}
+
+.size{
+    display: flex;
+    justify-content: space-around;
+}
+
 .cheese{
     order: 1;
     /* display: flex; */
@@ -45,4 +78,9 @@
     border-bottom-right-radius: 3px;
     padding: 8px 10px 7px 10px;
     margin-top: 10px;
+}
+
+
+.lastBox{
+    width: 355px;
 }
