@@ -72,9 +72,9 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
             ...topping
         }
         const newPie = dispatch(addToCartThunk(payload))
-        if(cart){
-            document.addEventListener('click', setShowCartModal)
-        }
+        // if(cart){
+        //     document.addEventListener('click', setShowCartModal)
+        // }
         setShowModal(false)
         e.stopPropagation()
     }
@@ -294,7 +294,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                     <option value={5}>5</option>
                 </select>
                 </div>
-                <button type='submit' id='addOrder'>{cart ? 'SAVE CHANGES' : 'ADD TO ORDER'}</button>
+                <button type='submit' id='addOrder' onClick={(e)=> e.stopPropagation()}>{cart ? 'SAVE CHANGES' : 'ADD TO ORDER'}</button>
                 {/* <img className='pie-img-builder'src={pie.pie_img ? pie.pie_img : 'https://i.imgur.com/qMF3XHK.jpg'}/> */}
             </div>
         </form>
