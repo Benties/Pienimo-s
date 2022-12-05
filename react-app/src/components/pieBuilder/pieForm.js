@@ -15,6 +15,19 @@ const PieForm = ({setShowModal, pie, cart}) => {
     const [cut, setCut] = useState(pie.cut)
     const [quantity, setQuantity] = useState(pie.quantity)
 
+    const showSize = (size) => {
+        if (size === 'x-large') return 'X-Large (16") '
+        if (size === 'large') return 'Large (14") '
+        if (size === 'medium') return 'Medium (12") '
+        return 'Small (10")'
+    }
+
+    const showStyle = (style) => {
+        if (style === 'hand') return 'Hand Tossed '
+        if (style === 'thin') return 'Thin '
+        if (style === 'brooklyn') return 'Brooklyn '
+    }
+
     const thisPie = {...pie}
     delete thisPie?.name ; delete thisPie.id ; delete thisPie.menu_item ; delete thisPie.size ;
     delete thisPie.style; delete thisPie.bake; delete thisPie.seasoning ; delete thisPie.cut ;
@@ -65,8 +78,9 @@ const PieForm = ({setShowModal, pie, cart}) => {
         e.stopPropagation()
     }
     return (
-        <form ref={pieBuilder} id='pie-form' onSubmit={addToOrder}>
+        <div id='builder-container'>
             <h1 id='builder-title'> Pienimo's Pie builder</h1>
+        <form ref={pieBuilder} id='pie-form' onSubmit={addToOrder}>
             <div id='left-box-builder'>
             <div className='size-crust top-box'>
                 <div className='top-title'>1. SIZE & CRUST</div>
@@ -268,14 +282,21 @@ const PieForm = ({setShowModal, pie, cart}) => {
             </div>
             <div className='lastBox top-box'>
                 <div className='top-title'>MY PIZZA</div>
+                <div className='builder-pie-info'>{showSize(size)}{showStyle(style)}{pie.name}</div>
+                <div classname='quantity-select'>
                 Quantity:
                 <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
                 </select>
+                </div>
                 <button type='submit' id='addOrder'>{cart ? 'SAVE CHANGES' : 'ADD TO ORDER'}</button>
             </div>
         </form>
+        </div>
     )
 }
  export  default PieForm

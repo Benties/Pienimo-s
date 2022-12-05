@@ -48,18 +48,25 @@ const CartForm = ({setShowModal}) => {
                 <div id='cart-body'>
                     {cart.map(item =>
                         <div className="cart-item-container">
-                            <div>
+                            <div className="cart-info">
                                 <img src={item.pie_img} className='cart-img'/>
-                                {showSize(item.size)}
-                                {showStyle(item.style)}
-                                {item.name? item.name : ' Pizza'}
-                                llllllllllll {item.price = parseFloat(item.quantity) * 17.99}
+                                <div className="cart-pie-text">
+                                    {showSize(item.size)}
+                                    {showStyle(item.style)}
+                                    {item.name? item.name : ' Pizza'}
+                                </div>
+                                <div className="cart-pie-price">
+                                    ${item.price = Math.round(100*(item.quantity) * 17.99)/100}
+                                </div>
                             </div>
                             <div className="lower-body">
                                 Quantity:
                                 <select value={item.quantity} onChange={(e) => changeAmt(item, e)}>
                                     <option value={1}>1</option>
                                     <option value={2}>2</option>
+                                    <option value={3}>3</option>
+                                    <option value={4}>4</option>
+                                    <option value={5}>5</option>
                                 </select>
                                 <div className="lower-bot">
                                     <PieFormModal pie={item} cart={true}/>
@@ -70,7 +77,7 @@ const CartForm = ({setShowModal}) => {
                     )}
                 </div>
                 <div className="cart-bottom">
-                    <div>Subtotal: ${cart.reduce((accum, val)=> accum + val.price,0)}</div>
+                    <div>Subtotal: ${Math.round(100*cart.reduce((accum, val)=> accum + val.price,0))/100}</div>
                     {cart.length ? <button type='submit'>CHECKOUT</button> : null}
                 </div>
             </form>

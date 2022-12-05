@@ -1,6 +1,9 @@
+#builder-container{
+    width: fit-content;
+}
 #pie-form{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 850px;
 
     /* margin: 10px 10px 10px 10px; */
@@ -82,5 +85,38 @@
 
 
 .lastBox{
-    width: 355px;
+    display: flex;
+    flex-direction: column;
+    width: 470px;
+    height: fit-content;
+    margin-top: 15px;
+}
+
+.builder-pie-info{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 15px;
+    /* margin-left: 10px; */
+}
+
+.quantity-select{
+    /* margin-left: 10px; */
+}
+
+#addOrder{
+    width: 300px;
+    height: 40px;
+    background-color: #E31837;
+    color: #FFFFFF;
+    font-size: 18px;
+    margin-left: 53px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }

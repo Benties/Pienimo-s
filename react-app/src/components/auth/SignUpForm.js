@@ -5,10 +5,10 @@ import { signUp } from '../../store/session';
 import './signUp.css'
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('')
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('')
   const [email, setEmail] = useState('');
-  const [number, setNumber] = useState('')
+  const [phone_number, setNumber] = useState('')
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -17,10 +17,13 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(firstName, lastName, email, number, password));
+      const data = await dispatch(signUp(first_name, last_name, email, phone_number, password));
+      // console.log(data)
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors(['Confirmed password must match password'])
     }
   };
 
@@ -61,7 +64,7 @@ const SignUpForm = () => {
         {/* <img src='https://i.imgur.com/mHyNKq5.png'/> */}
         <div id='join-text'>JOIN TO START EARNING POINTS TOWARD FREE PIE!</div>
         <form id='sign-up-form'onSubmit={onSignUp}>
-          <div>
+          <div className='error-div'>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
@@ -76,7 +79,7 @@ const SignUpForm = () => {
               type='text'
               name='firstname'
               onChange={updateFirstName}
-              value={firstName}
+              value={first_name}
             ></input>
           </div>
           <div className='form-input'>
@@ -89,7 +92,7 @@ const SignUpForm = () => {
               type='text'
               name='lastname'
               onChange={updateLastName}
-              value={lastName}
+              value={last_name}
             ></input>
           </div>
           <div className='form-input'>
@@ -98,7 +101,7 @@ const SignUpForm = () => {
               Email
             </label>
             <input
-            className='sign-up-input'
+              className='sign-up-input'
               type='text'
               name='email'
               onChange={updateEmail}
@@ -111,11 +114,11 @@ const SignUpForm = () => {
               Phone Number
             </label>
             <input
-            className='sign-up-input'
+              className='sign-up-input'
               type='text'
               name='number'
               onChange={updateNumber}
-              value={number}
+              value={phone_number}
             ></input>
           </div>
           <div className='form-input'>
@@ -124,7 +127,7 @@ const SignUpForm = () => {
               Password
             </label>
             <input
-            className='sign-up-input'
+              className='sign-up-input'
               type='password'
               name='password'
               onChange={updatePassword}
@@ -137,12 +140,12 @@ const SignUpForm = () => {
               Confirm Password
             </label>
             <input
-            className='sign-up-input'
+              className='sign-up-input'
               type='password'
               name='repeat_password'
               onChange={updateRepeatPassword}
               value={repeatPassword}
-              required={true}
+              // required={true}
             ></input>
           </div>
           <button id='sign-up-butt'type='submit'>JOIN NOW</button>
