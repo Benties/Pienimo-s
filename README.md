@@ -1,7 +1,7 @@
 # Pienimos
 ![image](https://i.imgur.com/6zTsOGu.png)
 ## A Dominos Clone
-Pienimos is a [Dominos](https://www.dominos.com/en/) inspired clone built on python and javascript.
+[Pienimos](https://pienimos.onrender.com/) is a [Dominos](https://www.dominos.com/en/) inspired clone built on python and javascript.
 Explore this full stack application and order your first Pie.
 ## Getting started
 1. Clone this repository(main branch)
