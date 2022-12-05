@@ -46,7 +46,7 @@ const CartForm = ({setShowCartModal}) => {
                     <button onClick={()=> setShowCartModal(false)}>X</button>
                 </div>
                 <div id='cart-body'>
-                    {cart.map(item =>
+                    {cart?.map(item =>
                         <div className="cart-item-container">
                             <div className="cart-info">
                                 <img src={item.pie_img} className='cart-img'/>

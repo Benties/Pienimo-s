@@ -35,7 +35,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
     const thisPie = {...pie}
     delete thisPie?.name ; delete thisPie.id ; delete thisPie.menu_item ; delete thisPie.size ;
     delete thisPie.style; delete thisPie.bake; delete thisPie.seasoning ; delete thisPie.cut ;
-    delete thisPie.quantity; delete thisPie.pie_img;
+    delete thisPie.quantity; delete thisPie.pie_img; delete thisPie.price
     const currPie = Object.entries(thisPie)
 
     const [checked, setChecked] = useState(currPie.filter(ele => ele[1] > 0).map(ele => ele[0]))
@@ -71,8 +71,10 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
             'quantity': quantity,
             ...topping
         }
-        const newPie = dispatch(addToCartThunk(payload) )
-        console.log('thismy newpie',payload)
+        const newPie = dispatch(addToCartThunk(payload))
+        if(cart){
+            document.addEventListener('click', setShowCartModal)
+        }
         setShowModal(false)
         e.stopPropagation()
     }
@@ -202,7 +204,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
             </div>
             <div className='top-box'>
                 <div className='top-title'>4. Toppings</div>
-                {currPie.filter(([key, val]) => key !== 'cheese' && key !== 'tempId' && !(sauce.includes(key))).map(([key, val]) => (
+                {currPie?.filter(([key, val]) => key !== 'cheese' && key !== 'tempId' && !(sauce.includes(key)))?.map(([key, val]) => (
                     <div className={toppingType(key)}>
                         {key.split('_').join(' ')}
                         <label>

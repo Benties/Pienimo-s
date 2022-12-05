@@ -5,8 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: fit-content;
-
+    /* height: fit-content; */
 }
 .cart-container{
     position: absolute;
@@ -20,11 +19,15 @@
     top: 100px;
     right: -15px;
     width: 450px;
-
     box-shadow: 0 0 3px rgb(19, 17, 17);
     color: #555555;
     background-color: #FFFFFF;
     /* padding-top: 700px; */
+}
+
+#cart-body{
+    max-height: 800px;
+    overflow-y: auto;
 }
 
 .cart-info{
