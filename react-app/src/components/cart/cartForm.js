@@ -22,14 +22,15 @@ const CartForm = ({setShowCartModal}) => {
     }
 
     const removeItem = (item) => {
-        // e.preventDefault()
         dispatch(removeFromCartThunk(item))
+        // window.alert(`succesfully deleted ${item.name}`)
     }
     const checkout = async () => {
        await cart.forEach(item => dispatch(createPieThunk(item)))
        localStorage.removeItem('cart')
        dispatch(emptyCartThunk(cart))
        setShowCartModal(false)
+       window.alert(`Your pies are on the way!`)
 
     }
 
@@ -70,7 +71,7 @@ const CartForm = ({setShowCartModal}) => {
                                 </select>
                                 <div className="lower-bot">
                                     <PieFormModal pie={item} cart={true} setShowCartModal={setShowCartModal}/>
-                                    <button onClick={(e) => (e.preventDefault(), removeItem(item))}>Remove</button>
+                                    <button onClick={(e) => (e.stopPropagation(), e.preventDefault(), removeItem(item))}>Remove</button>
                                 </div>
                             </div>
                         </div>

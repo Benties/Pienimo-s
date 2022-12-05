@@ -38,14 +38,14 @@ export const addToCartThunk = (payload) => async dispatch => {
     // const duplicates = cart.filter(item => item.id === payload.id)
     let itemsToAdd;
 
-    if (!payload.tempId){
+    if (!payload?.tempId){
         itemsToAdd = {
             ...payload,
             tempId: tempId++
         }
     }
     for (const item in cart) {
-        if (cart[item].tempId === payload?.tempId){
+        if (cart[item]?.tempId === payload?.tempId){
             itemsToAdd = {...payload}
         }
     }

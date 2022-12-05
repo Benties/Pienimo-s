@@ -92,7 +92,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                             type='radio'
                             name='size'
                             checked={size === 'small'}
-                            onClick={() => setSize('small')}
+                            onClick={(e) => (e.stopPropagation(), setSize('small'))}
                             />
                     </label>
                     <label id='med'>
@@ -101,7 +101,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                             type='radio'
                             name='size'
                             checked={size === 'medium'}
-                            onClick={() => setSize('medium')}
+                            onClick={(e) => (e.stopPropagation(), setSize('medium'))}
                             />
                     </label>
                     <label id='large'>
@@ -110,7 +110,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                             type='radio'
                             name='size'
                             checked={size === 'large'}
-                            onClick={() => setSize('large')}
+                            onClick={(e) => (e.stopPropagation(), setSize('large'))}
                             />
                     </label>
                     <label id='x-large'>
@@ -119,7 +119,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                             type='radio'
                             name='size'
                             checked={size === 'x-large'}
-                            onClick={() => setSize('x-large')}
+                            onClick={(e) => (e.stopPropagation(), setSize('x-large'))}
                             />
                     </label>
                 </div>
@@ -131,7 +131,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                             type='radio'
                             name='style'
                             checked={style === 'brooklyn'}
-                            onClick={() => setStyle('brooklyn')}
+                            onClick={(e) => (e.stopPropagation(),setStyle('brooklyn'))}
                             />
                     </label>
                     <label>
@@ -141,7 +141,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                             type='radio'
                             name='style'
                             checked={style === 'hand'}
-                            onClick={() => setStyle('hand')}
+                            onClick={(e) => (e.stopPropagation(),setStyle('hand'))}
                             />
                     </label>
                     <label>
@@ -151,7 +151,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                             type='radio'
                             name='style'
                             checked={style === 'thin'}
-                            onClick={() => setStyle('thin')}
+                            onClick={(e) => (e.stopPropagation(),setStyle('thin'))}
                             />
                     </label>
                 </div>
@@ -165,7 +165,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                             <input
                                 type='radio'
                                 checked={checked.includes(key)}
-                                onClick={() => checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]), setTopping({...topping, [`${key}`] : Number(2)}))}
+                                onClick={(e) => checked.includes(key)? (e.stopPropagation(),removeTopping(key)) : (e.stopPropagation(),setChecked([...checked, key]), setTopping({...topping, [`${key}`] : Number(2)}))}
                                 />
                         {checked.includes(key) &&
                             <select value={topping[`${key}`]}  onChange={(e) => setTopping({...topping, [`${key}`] : Number(e.target.value)})}>
@@ -189,7 +189,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                                 checked={checked.includes(key)}
                                 // checked={currSauce === String(key)}
                                 // onChange={() => removeTopping(key)}
-                                onClick={() => checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]), setTopping({...topping, [`${key}`] : Number(2)}))}
+                                onClick={(e) => checked.includes(key)? (e.stopPropagation(), removeTopping(key)) : (e.stopPropagation(), setChecked([...checked, key]), setTopping({...topping, [`${key}`] : Number(2)}))}
                                 // onClick={() => (setSauce(key), changeSauce(key), setTopping({...topping, [`${key}`] : Number(2)}))}
                                 />
                         {checked.includes(key) &&
@@ -211,7 +211,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                             <input
                                 type='radio'
                                 checked={checked.includes(key)}
-                                onClick={() => checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]), setTopping({...topping, [`${key}`] : Number(2)}))}
+                                onClick={(e) => checked.includes(key)? (e.stopPropagation(),removeTopping(key)) : (e.stopPropagation(), setChecked([...checked, key]), setTopping({...topping, [`${key}`] : Number(2)}))}
                                 />
                         {checked.includes(key) &&
                             <select value={topping[`${key}`]}  onChange={(e) => setTopping({...topping, [`${key}`] : Number(e.target.value)})}>
@@ -231,7 +231,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                         type='radio'
                         name='bake'
                         checked={bake === 'well'}
-                        onClick={() => setBake('well')}
+                        onClick={(e) => (e.stopPropagation(), setBake('well'))}
                     />
                 </label>
                 <label>Normal Bake
@@ -239,7 +239,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                         type='radio'
                         name='bake'
                         checked={bake === 'normal'}
-                        onClick={() => setBake('normal')}
+                        onClick={(e) => (e.stopPropagation(), setBake('normal'))}
                     />
                 </label>
                 <h3>Seasoning</h3>
@@ -248,14 +248,14 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                         type='radio'
                         name='seasoning'
                         checked={seasoning === true}
-                        onClick={() => setSeasoning(true)}/>
+                        onClick={(e) => (e.stopPropagation(), setSeasoning(true))}/>
                 </label>
                 <label>No Garlic-Seasoned Crust
                     <input
                         type='radio'
                         name='seasoning'
                         checked={seasoning === false}
-                        onClick={() => setSeasoning(false)}/>
+                        onClick={(e) => (e.stopPropagation(), setSeasoning(false))}/>
                 </label>
                 <h3>Cut</h3>
                 <label>Pie Cut
@@ -263,21 +263,21 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                         type='radio'
                         name='cut'
                         checked={cut === 'pie'}
-                        onClick={() => setCut('pie')}/>
+                        onClick={(e) => (e.stopPropagation(), setCut('pie'))}/>
                 </label>
                 <label>Square
                     <input
                         type='radio'
                         name='cut'
                         checked={cut === 'square'}
-                        onClick={() => setCut('square')}/>
+                        onClick={(e) => (e.stopPropagation(), setCut('square'))}/>
                 </label>
                 <label>Uncut
                     <input
                         type='radio'
                         name='cut'
                         checked={cut === 'uncut'}
-                        onClick={() => setCut('uncut')}/>
+                        onClick={(e) => (e.stopPropagation(), setCut('uncut'))}/>
                 </label>
             </div>
             </div>
