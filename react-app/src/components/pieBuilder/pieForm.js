@@ -15,10 +15,9 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
     const [cut, setCut] = useState(pie.cut)
     const [quantity, setQuantity] = useState(pie.quantity)
 
-    useEffect((e) => {
-        // e.stopPropagation()
-        // setShowCartModal(false)
-    })
+    // useEffect(() => {
+    //     return () => document.addEventListener('click', setShowCartModal)
+    // })
 
     const showSize = (size) => {
         if (size === 'x-large') return 'X-Large (16") '

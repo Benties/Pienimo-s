@@ -17,10 +17,10 @@ function CartFormModal() {
     }
   }
 
-  // useEffect(() => {
-  //    document.addEventListener("click", closeMenu);
-  //   return () => document.removeEventListener("click", closeMenu);
-  // }, [showModal]);
+  useEffect(() => {
+     document.addEventListener("click", closeMenu);
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showModal]);
 
   return (
     <div ref={cartMenu} className="cart-modal-container">
@@ -28,7 +28,7 @@ function CartFormModal() {
       <div id='cart-count'>{cart.length}</div>
       <div id='card-text'>CART</div>
       {showModal &&
-          <CartForm setShowCartModal={setShowModal} ref={pieBuilder}/>
+          <CartForm setShowCartModal={closeMenu}/>
       }
     </div>
   );
