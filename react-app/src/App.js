@@ -5,11 +5,12 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import SpecialtyPies from './components/menu/SpecialtyPie';
 import SplashPage from './components/splash/splash';
-import NavBar from './components/NavBar';
+import NavBar from './components/navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import FooterBar from './components/navigation/footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +50,7 @@ function App() {
           <SplashPage/>
         </Route>
       </Switch>
+      <FooterBar/>
     </BrowserRouter>
   );
 }

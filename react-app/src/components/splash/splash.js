@@ -27,7 +27,7 @@ function SplashPage () {
                         </div>
                     </div>
                     <div id='one-box'>
-                        <img className='splash-ad' src='https://i.imgur.com/5KowGtF.jpg'/>
+                        <img className='bottom-splash-ad' src='https://i.imgur.com/DggKdax.jpg'/>
                     </div>
                 </div>
                 <div id='splash-menu-container'>

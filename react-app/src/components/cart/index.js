@@ -7,12 +7,12 @@ function CartFormModal() {
   const [showModal, setShowModal] = useState(false);
   const cart = useSelector(state => Object.values(state.cart.cart))
   const cartMenu = useRef(null)
-  // const pieBuilder = document.querySelector(".pie-form")
+  const pieBuilder = useRef(null)
   // const cartButt = document.getElementById('cart-butt')
 
   const closeMenu = (e)=>{
     if(cartMenu.current && showModal && !cartMenu.current.contains(e.target)){
-      e.preventDefault()
+      // e.preventDefault()
       setShowModal(false)
     }
   }
@@ -27,9 +27,8 @@ function CartFormModal() {
       <button id="cart-butt" onClick={() => {setShowModal(!showModal)}}>🛒</button>
       <div id='cart-count'>{cart.length}</div>
       <div id='card-text'>CART</div>
-
       {showModal &&
-          <CartForm setShowModal={setShowModal}/>
+          <CartForm setShowCartModal={setShowModal} ref={pieBuilder}/>
       }
     </div>
   );

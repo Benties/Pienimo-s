@@ -4,7 +4,7 @@ import { addToCartThunk, emptyCartThunk, removeFromCartThunk } from "../../store
 import { createPieThunk } from "../../store/pie"
 import PieFormModal from "../pieBuilder"
 import './cart.css'
-const CartForm = ({setShowModal}) => {
+const CartForm = ({setShowCartModal}) => {
     const dispatch = useDispatch()
     const cart = useSelector(state => Object.values(state.cart.cart))
     const [amt, setAmt] = useState(0)
@@ -29,7 +29,7 @@ const CartForm = ({setShowModal}) => {
        await cart.forEach(item => dispatch(createPieThunk(item)))
        localStorage.removeItem('cart')
        dispatch(emptyCartThunk(cart))
-       setShowModal(false)
+       setShowCartModal(false)
 
     }
 
@@ -43,7 +43,7 @@ const CartForm = ({setShowModal}) => {
                 <div className="triang"></div>
                 <div className="cart-header">
                     <p>your cart</p>
-                    <button onClick={()=> setShowModal(false)}>X</button>
+                    <button onClick={()=> setShowCartModal(false)}>X</button>
                 </div>
                 <div id='cart-body'>
                     {cart.map(item =>
@@ -69,7 +69,7 @@ const CartForm = ({setShowModal}) => {
                                     <option value={5}>5</option>
                                 </select>
                                 <div className="lower-bot">
-                                    <PieFormModal pie={item} cart={true}/>
+                                    <PieFormModal pie={item} cart={true} setShowCartModal={setShowCartModal}/>
                                     <button onClick={(e) => (e.preventDefault(), removeItem(item))}>Remove</button>
                                 </div>
                             </div>

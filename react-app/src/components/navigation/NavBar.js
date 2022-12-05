@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
-import LoginFormModal from './auth';
-import LogoutButton from './auth/LogoutButton';
-import CartFormModal from './cart';
+import LoginFormModal from '../auth';
+import LogoutButton from '../auth/LogoutButton';
+import CartFormModal from '../cart';
 import './navBar.css'
 const NavBar = () => {
   const currentUser = useSelector(state => state?.session?.user)

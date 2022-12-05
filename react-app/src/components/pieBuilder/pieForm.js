@@ -5,7 +5,7 @@ import { addToCartThunk } from '../../store/cart'
 import './pieForm.css'
 
 
-const PieForm = ({setShowModal, pie, cart}) => {
+const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
     const pieBuilder = useRef(null)
     const dispatch = useDispatch()
     const [size, setSize] = useState(pie.size)
@@ -14,6 +14,11 @@ const PieForm = ({setShowModal, pie, cart}) => {
     const [seasoning, setSeasoning] = useState(pie.seasoning)
     const [cut, setCut] = useState(pie.cut)
     const [quantity, setQuantity] = useState(pie.quantity)
+
+    useEffect((e) => {
+        // e.stopPropagation()
+        // setShowCartModal(false)
+    })
 
     const showSize = (size) => {
         if (size === 'x-large') return 'X-Large (16") '
@@ -52,11 +57,6 @@ const PieForm = ({setShowModal, pie, cart}) => {
         return 'vege'
     }
 
-    // const changeSauce = (key) => {
-    //     checked.splice()
-    //     checked.includes(key)? removeTopping(key) : (setChecked([...checked, key]))
-    //     setTopping({...topping, [`${key}`] : Number(2)})
-    // }
 
     const addToOrder = (e) => {
         e.preventDefault()
@@ -294,6 +294,7 @@ const PieForm = ({setShowModal, pie, cart}) => {
                 </select>
                 </div>
                 <button type='submit' id='addOrder'>{cart ? 'SAVE CHANGES' : 'ADD TO ORDER'}</button>
+                {/* <img className='pie-img-builder'src={pie.pie_img ? pie.pie_img : 'https://i.imgur.com/qMF3XHK.jpg'}/> */}
             </div>
         </form>
         </div>

@@ -26,10 +26,11 @@
     background-color: white;
     border: 1px transparent solid;
     border-radius: 1px;
-    width: 900px;
+    width: fit-content;
     height: fit-content;
     /* padding: 25px; */
-    overflow-x: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   /* .modal-content form{

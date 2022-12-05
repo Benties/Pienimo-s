@@ -90,6 +90,7 @@
     width: 470px;
     height: fit-content;
     margin-top: 15px;
+    margin-right: 10px;
 }
 
 .builder-pie-info{
@@ -120,3 +121,12 @@
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }
+
+/* .pie-img-builder{
+    width: 300px;
+    height: 300px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 300px;
+    border-bottom-left-radius: 300px;
+    border-bottom-right-radius: 300px;
+} */

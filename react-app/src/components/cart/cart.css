@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 76px;
+    height: fit-content;
 
 }
 .cart-container{
