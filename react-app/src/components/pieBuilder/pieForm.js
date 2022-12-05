@@ -180,11 +180,11 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                 <div className='top-title'>3. SAUCE</div>
                 {currPie.filter(([key, val]) => sauce.includes(key)).map(([key, val]) => (
                     <div className={toppingType(key)}>
-                        {key}
+                        {key.split('_').join(' ')}
                         <label>
                             <input
                                 type='radio'
-                                name='sauce'
+                                // name='sauce'
                                 checked={checked.includes(key)}
                                 // checked={currSauce === String(key)}
                                 // onChange={() => removeTopping(key)}
@@ -205,7 +205,7 @@ const PieForm = ({setShowModal, pie, cart, setShowCartModal}) => {
                 <div className='top-title'>4. Toppings</div>
                 {currPie.filter(([key, val]) => key !== 'cheese' && key !== 'tempId' && !(sauce.includes(key))).map(([key, val]) => (
                     <div className={toppingType(key)}>
-                        {key}
+                        {key.split('_').join(' ')}
                         <label>
                             <input
                                 type='radio'
