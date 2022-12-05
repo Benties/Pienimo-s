@@ -34,7 +34,7 @@ export const addToCartThunk = (payload) => async dispatch => {
     const cart = localStorage.getItem('cart') ?
         JSON.parse(localStorage.getItem('cart')) : []
 
-    let tempId = cart.length ? cart[cart.length-1].tempId + 1 : 0
+    let tempId = cart.length > 0 ? cart[cart.length-1].tempId + 1 : 0
     // const duplicates = cart.filter(item => item.id === payload.id)
     let itemsToAdd;
 
