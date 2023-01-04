@@ -4,11 +4,13 @@ import session from './session'
 import menu from './menu'
 import pie from './pie'
 import cart from './cart'
+import maps from './maps';
 const rootReducer = combineReducers({
   session,
   menu,
   pie,
-  cart
+  cart,
+  maps
 });
 
 
