@@ -1,0 +1,78 @@
+#profile-outer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#pie-profile-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 90px;
+    width: 930px;
+}
+
+#pie-profile-header{
+    width: 930px;
+}
+
+#porfile-header-words{
+    height: 56px;
+    color: white;
+    text-shadow: -1px -1px 0  #0F79A8,
+                 1px -1px 0  #0F79A8,
+                 -1px 1px 0  #0F79A8,
+                 1px 1px 0  #0F79A8,
+                 0 0 3px #0F79A8;
+    font-size: 40px;
+    line-height: 56px;
+    text-decoration: none solid rgb(255, 255, 255);
+    text-align: center;
+    text-transform: uppercase;
+    word-spacing: 0px;
+}
+
+#profile-rewards{
+    width: 930px;
+    height: 169px;
+    background-color: #0F79A8;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+}
+
+#profile-settings{
+    width: 930px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+#settings-word{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 930px;
+    height: 47px;
+    background-color: #006491;
+    color: #FFFFFF;
+    font-size: 24px;
+}
+
+#settings-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+#settings-bottom{
+
+}
+
+#contact-info{
+    display: flex;
+    flex-direction: column;
+}

@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     phone_number = db.Column(db.String, nullable=False)
     reward_point = db.Column(db.Integer)
+    address = db.relationship('Address', back_populates='user', lazy=False, cascade='all, delete')
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
 
@@ -40,6 +41,7 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'phone_number': self.phone_number,
             'reward_point': self.reward_point,
+            'address' : self.address.to_dict(),
             'created_at': json.dumps(self.created_at, default=str),
             'updated_at': json.dumps(self.updated_at, default=str)
         }

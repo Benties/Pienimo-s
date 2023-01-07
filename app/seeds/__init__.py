@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .pie import seed_pies, undo_pies
+from .address import seed_addresses, undo_addresses
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
@@ -18,8 +19,10 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
         undo_pies()
+        undo_addresses()
     seed_users()
     seed_pies()
+    seed_addresses()
     # Add other seed functions here
 
 
@@ -28,4 +31,5 @@ def seed():
 def undo():
     undo_users()
     undo_pies()
+    undo_addresses()
     # Add other undo functions here

@@ -12,6 +12,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import FooterBar from './components/navigation/footer';
 import MapContainer from './components/maps';
+import PizzaProfile from './components/Profile';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,8 +33,8 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/orders'>
-          <MapContainer/>
+        <Route path='/profile'>
+          <PizzaProfile/>
         </Route>
         <Route path='/menu/pies' exact={true}>
           <SpecialtyPies/>
