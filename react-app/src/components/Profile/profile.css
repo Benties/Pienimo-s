@@ -1,3 +1,7 @@
+#profile-default{
+    margin: 400px;
+}
+
 #profile-outer{
     display: flex;
     flex-direction: column;

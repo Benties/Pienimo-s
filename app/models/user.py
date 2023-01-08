@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.orm import relationship
 import datetime
 import json
 
@@ -41,7 +42,7 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'phone_number': self.phone_number,
             'reward_point': self.reward_point,
-            'address' : self.address.to_dict(),
+            'address' : self.address[0].to_dict(),
             'created_at': json.dumps(self.created_at, default=str),
             'updated_at': json.dumps(self.updated_at, default=str)
         }

@@ -22,6 +22,7 @@ class Address(db.Model):
         return {
         'id': self.id,
         'user_id': self.user_id,
+        'street_address': self.street_address,
         # 'address_type': self.address_type,
         # 'suite_apt': self.suite_apt,
         'city': self.city,
