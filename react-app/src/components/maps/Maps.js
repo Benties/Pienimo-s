@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import React, { useEffect, useState } from 'react';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { useDispatch, useSelector } from 'react-redux';
 
 const containerStyle = {
@@ -10,12 +10,14 @@ const containerStyle = {
   //     lat: parseInt(store.StoreLocation.Latitude),
   //     lng: parseInt(store.StoreLocation.Longitude),
   //   };
-  const center = {
-    lat: 51.5322,
-    lng: 0.0341,
-  };
+  // let center = {
+  //   lat: 51.5322,
+  //   lng: 0.0341,
+  // };
 
   const Maps = ({ apiKey }) => {
+  const [center, setCenter] = useState({lat: 51.5322,
+    lng: 0.0341})
   const userAddress = useSelector(state => state.session.user.address)
 
 
@@ -33,31 +35,28 @@ const containerStyle = {
     const lng = data.results[0].geometry.location.lng;
 
     // Return the coordinates as an object
-    return { lat:lat, lng:lng };
+    return {lat, lng};
   } else {
     // If the request was unsuccessful, throw an error
     throw new Error(`Error: ${data.status}`);
   }
 }
-
-// Test the function with a sample address
+// `${userAddress.street_address}, ${userAddress.city}, ${userAddress.state}`
 useEffect(() => {
-  getLatLngFromAddress("1600 Amphitheatre Parkway, Mountain View, CA")
+  getLatLngFromAddress(`${userAddress.street_address}, ${userAddress.city}, ${userAddress.state}`)
     .then(coordinates => {
       console.log(`Latitude: ${coordinates.lat}`);
       console.log(`Longitude: ${coordinates.lng}`);
+
+      return setCenter({lat:coordinates.lat , lng: coordinates.lng})
+
     })
     .catch(error => {
       console.error(error);
     });
-})
-  // const pinPoint = fetch(`https://maps.googleapis.com/maps/api/geocode/json?
-  //                         address=${userAddress.street_address.split(' ').join('+')},+${userAddress.city.split(' ').join('+')},+${userAddress.state}&key=${apiKey}`)
-// console.log(pinPoint)
-// const center = {
-//   lat: 51.5322,
-//   lng: 0.0341,
-// };
+    },[])
+
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: apiKey,
@@ -66,11 +65,14 @@ useEffect(() => {
   return (
     <>
       {isLoaded && (
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={10}
-        />
+
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={10}
+          >
+          <Marker position={center}/>
+        </GoogleMap>
       )}
     </>
   );

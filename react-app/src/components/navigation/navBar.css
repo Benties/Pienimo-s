@@ -15,7 +15,9 @@ nav{
     box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 13px 0px;
     text-decoration: none solid rgb(255, 255, 255)
 }
-
+#profile-nav{
+    width: 100px;
+}
 .nav-div{
     display: flex;
     flex-direction: row;

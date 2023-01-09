@@ -46,6 +46,10 @@ const NavBar = () => {
             <NavLink to='/menu/pies' exact={true} activeClassName='active'>
               MENU
             </NavLink>
+            {currentUser ?
+            <NavLink to='/profile' exact={true} id='profile-nav'>
+              PROFILE
+            </NavLink> : null }
           {/* </div> */}
         </div>
           <div className='nav-end'>
