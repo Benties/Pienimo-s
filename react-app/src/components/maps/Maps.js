@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 const containerStyle = {
   width: '100%',
   height: '400px',
+  // position: 'sticky'
+  // zindex: '-2'
 };
 // const center = {
   //     lat: parseInt(store.StoreLocation.Latitude),

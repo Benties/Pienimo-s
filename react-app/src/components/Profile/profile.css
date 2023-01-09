@@ -70,13 +70,32 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 20px;
+    font-size: 18px;
 }
 
-#settings-bottom{
+#address-info{
+    border: none;
+    background-color: #FFFFFF;
+    font-size: 18px;
+    text-align: left;
+    font-weight: normal;
 
+}
+#address-info:hover{
+    /* color: #FF0000; */
+    color: #0F79A8;
+}
+#address-butt-text{
+    margin-bottom: 25px;
 }
 
 #contact-info{
     display: flex;
     flex-direction: column;
+}
+
+.settings-title{
+    font-style: italic;
+    font-weight: lighter;
+    margin-bottom: 10px;
 }

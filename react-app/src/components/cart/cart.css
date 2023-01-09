@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
     /* height: fit-content; */
 }
 .cart-container{
@@ -22,6 +23,7 @@
     box-shadow: 0 0 3px rgb(19, 17, 17);
     color: #555555;
     background-color: #FFFFFF;
+    z-index: 9999;
     /* padding-top: 700px; */
 }
 

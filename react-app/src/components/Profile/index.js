@@ -3,9 +3,17 @@ import { useDispatch, useSelector } from "react-redux"
 import MapContainer from "../maps"
 import './profile.css'
 const PizzaProfile = () => {
-
     const user = useSelector(state => state.session?.user)
     const key = useSelector((state) => state.maps.key);
+
+    const [streetAddress, setStreetAddress] = useState()
+    const [city, setCity] = useState()
+    const [state, setState] = useState()
+    const [zipCode, setZipCode] = useState()
+
+    const changeAddress = () => {
+
+    }
 
     let profilePage
     user?.first_name ?
@@ -31,18 +39,23 @@ const PizzaProfile = () => {
             <div id='settings-word'>PROFILE SETTINGS</div>
             <div id='settings-top'>
                 <div id='contact-info'>
-                    <div>Your Information</div>
+                    <div className="settings-title">Your Information</div>
                     <div>{user.first_name} {user.last_name}</div>
                     <div>{user.email}</div>
                     <div>{user.phone_number}</div>
                 </div>
-                <div id='address-info'>
-                    <div>Address</div>
-                    <div>{user.address.street_address}</div>
-                    <div>{user.address.city}, {user.address.state} {user.address.zipcode}</div>
-                </div>
+                <button id='address-info' onClick={changeAddress()}>
+                    {/* <input
+                        value={streetAddress}
+                    onChange={(e) => setStreetAddress(e.target.value)}/> */}
+                    <div id='address-butt-text'>
+                        <div className="settings-title">Delivery Address</div>
+                        <div>{user.address.street_address}</div>
+                        <div>{user.address.city}, {user.address.state} {user.address.zipcode}</div>
+                    </div>
+                </button>
                 <div id='payment-info'>
-                    <div>Primary Payment Method</div>
+                    <div className="settings-title">Primary Payment Method</div>
                     <div>Visa ending in ***1234</div>
                     <div>Expires on 12/21/41</div>
                 </div>
