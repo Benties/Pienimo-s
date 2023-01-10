@@ -99,3 +99,8 @@
     font-weight: lighter;
     margin-bottom: 10px;
 }
+
+#address-form{
+    display: flex;
+    flex-direction: column;
+}

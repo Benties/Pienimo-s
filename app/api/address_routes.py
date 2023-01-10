@@ -7,6 +7,7 @@ from app.forms import AddressForm
 address_routes = Blueprint('address', __name__)
 
 @address_routes.route('', methods=['POST'])
+@login_required
 def post_address():
     '''
     Post an Address
@@ -31,13 +32,12 @@ def update_address(address_id):
     '''
     Update an address
     '''
-    address = Address.query.get_or_404()
+    address = Address.query.get_or_404(address_id)
 
     form = AddressForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
-        address.user_id=data['user_id']
         address.street_address=data['street_address']
         address.city=data['city']
         address.state=data['state']

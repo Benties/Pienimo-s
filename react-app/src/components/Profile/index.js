@@ -10,9 +10,67 @@ const PizzaProfile = () => {
     const [city, setCity] = useState()
     const [state, setState] = useState()
     const [zipCode, setZipCode] = useState()
+    const [address, setAddress] = useState(true)
 
-    const changeAddress = () => {
+    const changeAddress = async (payload, address_id) => {
+        const response = await fetch(`/api/address/${address_id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(payload)
+        })
+        if (response.ok) {
+            const addy = await response.json()
+            return addy;
+          } else if (response.status < 500) {
+            const data = await response.json();
+            if (data.errors) {
+              return data.errors;
+            }
+          } else {
+            return ['An error occurred. Please try again.']
+          }
+    }
+    const onSubmit = () => {
 
+        const payload = {
+            'street_address': streetAddress,
+            'city' : city,
+            'state' : state,
+            'zipcode' : zipCode
+        }
+        changeAddress(payload, user.address.id)
+    }
+
+    let addressPlacement
+    if(user?.first_name){
+            address ?
+            addressPlacement =
+            <div id='address-butt-text'>
+                <div>{user.address.street_address}</div>
+                <div>{user.address.city}, {user.address.state} {user.address.zipcode}</div>
+            </div> :
+            addressPlacement =
+            <form onSubmit={onSubmit} id='address-form'>
+                <input
+                value={streetAddress}
+                placeholder={user.address.street_address}
+                onChange={(e) => setStreetAddress(e.target.value)}/>
+                <input
+                value={city}
+                placeholder={user.address.city}
+                onChange={(e) => setCity(e.target.value)}/>
+                <input
+                value={state}
+                placeholder={user.address.state}
+                onChange={(e) => setState(e.target.value)}/>
+                <input
+                value={zipCode}
+                placeholder={user.address.zipcode}
+                onChange={(e) => setZipCode(e.target.value)}/>
+                <button>Change Address</button>
+            </form>
     }
 
     let profilePage
@@ -44,16 +102,12 @@ const PizzaProfile = () => {
                     <div>{user.email}</div>
                     <div>{user.phone_number}</div>
                 </div>
-                <button id='address-info' onClick={changeAddress()}>
-                    {/* <input
-                        value={streetAddress}
-                    onChange={(e) => setStreetAddress(e.target.value)}/> */}
-                    <div id='address-butt-text'>
+                <div>
+                    <button id='address-info' onClick={() => setAddress(!address)}>
                         <div className="settings-title">Delivery Address</div>
-                        <div>{user.address.street_address}</div>
-                        <div>{user.address.city}, {user.address.state} {user.address.zipcode}</div>
-                    </div>
-                </button>
+                    </button>
+                        {addressPlacement}
+                </div>
                 <div id='payment-info'>
                     <div className="settings-title">Primary Payment Method</div>
                     <div>Visa ending in ***1234</div>
