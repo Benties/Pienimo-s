@@ -6,7 +6,7 @@ const containerStyle = {
   width: '100%',
   height: '400px',
   // position: 'sticky'
-  // zindex: '-2'
+  zIndex: -1
 };
 // const center = {
   //     lat: parseInt(store.StoreLocation.Latitude),
