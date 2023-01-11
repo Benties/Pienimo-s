@@ -32,6 +32,33 @@ const PizzaProfile = () => {
             return ['An error occurred. Please try again.']
           }
     }
+
+    const submitAddress = async (payload) => {
+        const response = await fetch(`/api/address`, {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify({
+                'user_id' : user.id,
+                'street_address': streetAddress,
+                'city' : city,
+                'state' : state,
+                'zipcode' : zipCode
+            })
+        })
+        if (response.ok) {
+            const addy = await response.json()
+            return addy;
+          } else if (response.status < 500) {
+            const data = await response.json();
+            if (data.errors) {
+              return data.errors;
+            }
+          } else {
+            return ['An error occurred. Please try again.']
+          }
+    }
     const onSubmit = () => {
 
         const payload = {
@@ -43,33 +70,46 @@ const PizzaProfile = () => {
         changeAddress(payload, user.address.id)
     }
 
+    const newSubmit = () => {
+        // const payload = {
+        //     'user_id' : user.id,
+        //     'street_address': streetAddress,
+        //     'city' : city,
+        //     'state' : state,
+        //     'zipcode' : zipCode
+        // }
+        // console.log('helloooooooooooooooooooooooo')
+        // console.log('this si front end payload', payload)
+        submitAddress()
+    }
+
     let addressPlacement
     if(user?.first_name){
             address ?
             addressPlacement =
             <div id='address-butt-text'>
-                <div>{user.address.street_address}</div>
-                <div>{user.address.city}, {user.address.state} {user.address.zipcode}</div>
+                <div>{user.address === '' ? 'Street Address' : user.address.street_address}</div>
+                <div>{user.address === '' ? 'City' :user.address.city}, {user.address === '' ? 'State,' : user.address.state} {user.address === '' ? 'Zipcode' : user.address.zipcode}</div>
             </div> :
             addressPlacement =
-            <form onSubmit={onSubmit} id='address-form'>
+            <form onSubmit={user.address === '' ? newSubmit : onSubmit} id='address-form'>
                 <input
                 value={streetAddress}
-                placeholder={user.address.street_address}
+                placeholder='Street Address'
                 onChange={(e) => setStreetAddress(e.target.value)}/>
                 <input
                 value={city}
-                placeholder={user.address.city}
+                placeholder='City'
                 onChange={(e) => setCity(e.target.value)}/>
                 <input
                 value={state}
-                placeholder={user.address.state}
+                placeholder='State'
                 onChange={(e) => setState(e.target.value)}/>
                 <input
                 value={zipCode}
-                placeholder={user.address.zipcode}
+                placeholder='Zipcode'
                 onChange={(e) => setZipCode(e.target.value)}/>
-                <button>Change Address</button>
+                <button>Enter Address</button>
             </form>
     }
 
@@ -78,20 +118,34 @@ const PizzaProfile = () => {
     profilePage =
     <div id='profile-outer'>
     <div id='pie-profile-container'>
+        <img id='profile-top-logo' src="https://i.imgur.com/nqttBCw.png"/>
         <div id='pie-profile-header'>
             <div id='porfile-header-words'>YOUR PIE PROFILE</div>
         </div>
         <div id='profile-rewards'>
-            <div>pie logo</div>
-            <div>pie animation</div>
-            <div id='profile-points-container'>
-                <div id='profile-points'>
-                    <div>{user.reward_point}</div>
-                    <div>/60</div>
-                </div>
-                <div>TOWARD NEXT FREE PIE</div>
+            <div id='rewards-logo-container'>
+                <img id='rewards-logo' src="https://i.imgur.com/DpG8sbQ.png"/>
             </div>
-            <button onClick={''}>REDEEM</button>
+            <div id='rewards-right'>
+                <div id='profile-points-container'>
+                <div id='pie-animation'>
+                    <div id='animated-outer'>
+                        <div id='animated-inner'></div>
+                    </div>
+                </div>
+                    <div id='profile-points'>
+                        <div id='points-container'>
+                            <div id='user-points'>{user.reward_point === null? '00': user.reward_point}</div>
+                            <div>/60pts</div>
+                        </div>
+                        <div id='rewards-points-bottom'>TOWARD NEXT FREE PIE</div>
+                    </div>
+                </div>
+                <div id='rewards-text-bottom'>
+                    The store you selected doesn't participate in Piece of the
+                    Pie Rewards. Please select a different store in order to earn points.
+                </div>
+            </div>
         </div>
         <div id='profile-settings'>
             <div id='settings-word'>PROFILE SETTINGS</div>

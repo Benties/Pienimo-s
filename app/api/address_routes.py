@@ -13,7 +13,7 @@ def post_address():
     Post an Address
     '''
     form = AddressForm()
-    form['csrf_token'].data = request.cookies['crsf_token']
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
         new_address = Address(user_id=data['user_id'],

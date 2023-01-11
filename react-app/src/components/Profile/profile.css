@@ -10,15 +10,57 @@
     width: 100%;
 }
 
+#profile-top-logo{
+    height: 100px;
+    width: 100px;
+    display: flex;
+    margin: 20px;
+}
+
+#pie-animation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 60px;
+    height: 100px;
+    width: 100px;
+}
+
+#animated-outer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #023952;
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+}
+
+#animated-inner{
+    background-color: #005A83;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+}
+
 #pie-profile-container{
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
     margin-top: 90px;
     width: 930px;
 }
 
 #pie-profile-header{
     width: 930px;
+    margin-bottom: 20px
+}
+
+#rewards-logo{
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
 }
 
 #porfile-header-words{
@@ -39,11 +81,73 @@
 
 #profile-rewards{
     width: 930px;
-    height: 169px;
+    height: 220px;
     background-color: #0F79A8;
     color: #FFFFFF;
     display: flex;
     flex-direction: row;
+}
+
+#rewards-logo-container{
+    width: 216px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #005A83;
+}
+
+#rewards-right{
+    display: flex;
+    width: 714px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#profile-points-container{
+    display: flex;
+    align-items: center;
+    width: 700px;
+    /* background-color: #005A83; */
+}
+
+#profile-points{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 95px;
+    /* background-color: #FFFFFF; */
+    margin-bottom: 20px;
+    margin-left: 50px;
+}
+
+#points-container{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    width: 180px;
+    height: 77px;
+    font-size: 45px;
+}
+
+#rewards-points-bottom{
+    font-size: 12px;
+}
+
+#user-points{
+    font-size: 62px;
+    color: #42cfff;
+}
+
+#rewards-text-bottom{
+    width: 460px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 15px;
+    margin-left: 60px;
 }
 
 #profile-settings{
