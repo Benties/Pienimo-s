@@ -179,7 +179,7 @@ const PizzaProfile = () => {
     </div>
 </div> :
 profilePage =
-<div id='profile-default'>You must be signed to view your profile</div>
+<div id='profile-default'>You must be signed in to view your profile</div>
     return (
         <div>
             {profilePage}

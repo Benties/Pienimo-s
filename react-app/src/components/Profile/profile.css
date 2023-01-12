@@ -1,5 +1,8 @@
 #profile-default{
-    margin: 400px;
+    display: flex;
+    justify-content: center;
+    margin-top: 45vh;
+    margin-bottom: 47vh;
 }
 
 #profile-instructions{
