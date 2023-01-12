@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, createContext } from 'react';
 import { useSelector } from 'react-redux';
 import CartForm from './cartForm';
 import './cart.css'
@@ -6,8 +6,9 @@ import './cart.css'
 function CartFormModal() {
   const [showModal, setShowModal] = useState(false);
   const cart = useSelector(state => Object.values(state.cart.cart))
+  const cartRef = useRef(null)
   const cartMenu = useRef(null)
-  const pieBuilder = useRef(null)
+
   // const cartButt = document.getElementById('cart-butt')
 
   const closeMenu = (e)=>{
@@ -23,6 +24,7 @@ function CartFormModal() {
   }, [showModal]);
 
   return (
+
     <div ref={cartMenu} className="cart-modal-container">
       <button id="cart-butt" onClick={() => {setShowModal(!showModal)}}>🛒</button>
       <div id='cart-count'>{cart.length}</div>

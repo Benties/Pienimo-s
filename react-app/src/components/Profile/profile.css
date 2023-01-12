@@ -2,6 +2,13 @@
     margin: 400px;
 }
 
+#profile-instructions{
+    display: flex;
+    justify-content: center;
+    color: #E31837;
+    /* margin-top: 10px; */
+}
+
 #profile-outer{
     display: flex;
     flex-direction: column;
@@ -66,7 +73,7 @@
 #porfile-header-words{
     height: 56px;
     color: white;
-    text-shadow: -1px -1px 0  #0F79A8,
+    text-shadow: -1px -1px 0  rgb(15, 121, 168),
                  1px -1px 0  #0F79A8,
                  -1px 1px 0  #0F79A8,
                  1px 1px 0  #0F79A8,

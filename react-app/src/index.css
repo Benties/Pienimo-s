@@ -4,16 +4,17 @@
     font-weight: bold;
 }
 
-/* #root{
-    width: 100%;
+#root{
+    /* height: 100%; */
+    /* width: 100%;
     display: flex;
     justify-content: center;
     align-content: center;
     justify-items: center;
     align-items: center;
-    position: fixed;
+    position: fixed; */
 
-} */
+}
 
 button{
     cursor: pointer;

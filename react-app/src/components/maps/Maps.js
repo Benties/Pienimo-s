@@ -3,23 +3,18 @@ import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { useDispatch, useSelector } from 'react-redux';
 
 const containerStyle = {
+  PointerEvent: 'none',
   width: '100%',
   height: '400px',
-  // position: 'sticky'
-  zIndex: -1
+  zIndex: -1,
 };
-// const center = {
-  //     lat: parseInt(store.StoreLocation.Latitude),
-  //     lng: parseInt(store.StoreLocation.Longitude),
-  //   };
-  // let center = {
-  //   lat: 51.5322,
-  //   lng: 0.0341,
-  // };
+
 
   const Maps = ({ apiKey }) => {
-  const [center, setCenter] = useState({lat: 51.5322,
-    lng: 0.0341})
+
+  const [center, setCenter] = useState({lat: 51.5322, lng: 0.0341})
+  const [markers, setMarkers] = useState([])
+
   const userAddress = useSelector(state => state.session.user.address)
 
 
@@ -43,13 +38,26 @@ const containerStyle = {
     throw new Error(`Error: ${data.status}`);
   }
 }
+
+const generateMarkers = async (originalCoord, miles) => {
+  const R = 3959; // radius of Earth in miles
+  let res = []
+  for (let i = 0; i < 5; i++) {
+    const bearing = Math.random() * 360;
+    const lat = originalCoord[0] + (miles / R) * (180 / Math.PI) * Math.cos(bearing);
+    const lng = originalCoord[1] + (miles / R) * (180 / Math.PI) * Math.sin(bearing);
+    res.push({lat:lat,lng:lng})
+  }
+  setMarkers(res)
+  return res
+}
 // `${userAddress.street_address}, ${userAddress.city}, ${userAddress.state}`
 useEffect(() => {
   getLatLngFromAddress(`${userAddress.street_address}, ${userAddress.city}, ${userAddress.state}`)
     .then(coordinates => {
       console.log(`Latitude: ${coordinates.lat}`);
       console.log(`Longitude: ${coordinates.lng}`);
-
+      console.log('this is markerrrrrrrrrrr',generateMarkers([coordinates.lat,coordinates.lng], 5))
       return setCenter({lat:coordinates.lat , lng: coordinates.lng})
 
     })
@@ -67,13 +75,22 @@ useEffect(() => {
   return (
     <>
       {isLoaded && (
-
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
             zoom={10}
+            options={{disableDefaultUI: true}}
           >
-          <Marker position={center}/>
+          {markers.map((marker =>
+            <Marker
+            position={marker}
+            icon={{
+              path: "M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z",
+              fillColor:'rgb(15,121,168)',
+              fillOpacity:1,
+              scale:.6
+            }}/>
+          ))}
         </GoogleMap>
       )}
     </>

@@ -168,6 +168,7 @@ const PizzaProfile = () => {
                     <div>Expires on 12/21/41</div>
                 </div>
             </div>
+            <div id='profile-instructions'>Markers below represent Pienimo locations near you. Click on Delivery Address to change your address</div>
             <div id='maps-master-container'>
                 <MapContainer/>
             </div>
