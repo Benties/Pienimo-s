@@ -19,7 +19,6 @@ const containerStyle = {
 
 
   async function getLatLngFromAddress(address) {
-  // Replace YOUR_API_KEY with your own API key
 
   // Make a request to the Google Maps API to convert the address to lat/lng coordinates
   const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`);
@@ -51,13 +50,11 @@ const generateMarkers = async (originalCoord, miles) => {
   setMarkers(res)
   return res
 }
-// `${userAddress.street_address}, ${userAddress.city}, ${userAddress.state}`
+
 useEffect(() => {
   getLatLngFromAddress(`${userAddress.street_address}, ${userAddress.city}, ${userAddress.state}`)
     .then(coordinates => {
-      console.log(`Latitude: ${coordinates.lat}`);
-      console.log(`Longitude: ${coordinates.lng}`);
-      console.log('this is markerrrrrrrrrrr',generateMarkers([coordinates.lat,coordinates.lng], 5))
+      generateMarkers([coordinates.lat,coordinates.lng], 5)
       return setCenter({lat:coordinates.lat , lng: coordinates.lng})
 
     })

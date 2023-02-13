@@ -39,13 +39,7 @@ const PizzaProfile = () => {
             headers: {
                 'Content-Type' : 'application/json',
             },
-            body: JSON.stringify({
-                'user_id' : user.id,
-                'street_address': streetAddress,
-                'city' : city,
-                'state' : state,
-                'zipcode' : zipCode
-            })
+            body: JSON.stringify(payload)
         })
         if (response.ok) {
             const addy = await response.json()
@@ -71,16 +65,15 @@ const PizzaProfile = () => {
     }
 
     const newSubmit = () => {
-        // const payload = {
-        //     'user_id' : user.id,
-        //     'street_address': streetAddress,
-        //     'city' : city,
-        //     'state' : state,
-        //     'zipcode' : zipCode
-        // }
-        // console.log('helloooooooooooooooooooooooo')
-        // console.log('this si front end payload', payload)
-        submitAddress()
+
+        const payload = {
+            'user_id' : user.id,
+            'street_address': streetAddress,
+            'city' : city,
+            'state' : state,
+            'zipcode' : zipCode
+        }
+        submitAddress(payload)
     }
 
     let addressPlacement
