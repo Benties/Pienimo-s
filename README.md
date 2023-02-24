@@ -11,8 +11,8 @@ Explore this full stack application and order your first Pie.
       pipenv install -r requirements.txt
       ```
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+3. Create a **.env** file based on the example with proper settings for your development environment
+(MAPS_API_KEY in the env must be set to your own Google Maps API Key in order for google maps to display)
 
 4. Make sure the SQLite3 database connection URL is in the **.env** file
 
@@ -68,4 +68,3 @@ Explore this full stack application and order your first Pie.
 ![image](https://i.imgur.com/3xz2Wc9.png)
 - The CART button will open the cart
 ![image](https://i.imgur.com/83Puaom.png)
-
